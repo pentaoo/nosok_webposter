@@ -1,0 +1,219 @@
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --pink: #ff4fa2;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background: var(--bg);
+  font-family: "Georgia", "Times New Roman", serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+/* LOGO */
+
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(40px, 7vw, 72px);
+  letter-spacing: 0.08em;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.logo-star {
+  color: var(--pink);
+  font-size: 0.9em;
+  display: inline-block;
+  transform: translateY(-0.08em);
+}
+
+/* STARS */
+
+.stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  font-size: 32px;
+  /* общий вид полёта */
+  animation-name: fly;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  opacity: 0;
+}
+
+.star::before {
+  content: "✦"; /* можно заменить на пиксельную иконку */
+  display: block;
+}
+
+@keyframes fly {
+  0% {
+    transform: translate(calc(var(--dx) * 1.6), calc(var(--dy) * 1.6))
+      scale(1.4);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Индивидуальные траектории, цвета и тайминги
+       dx / dy — направление полёта (из вне экрана к центру)       */
+
+.star:nth-child(1) {
+  --dx: -380px;
+  --dy: -260px;
+  color: #f5538a;
+  animation-duration: 7s;
+  animation-delay: -1s;
+}
+.star:nth-child(2) {
+  --dx: 360px;
+  --dy: -260px;
+  color: #f5d93b;
+  animation-duration: 6s;
+  animation-delay: -3s;
+}
+.star:nth-child(3) {
+  --dx: -420px;
+  --dy: 260px;
+  color: #f5538a;
+  animation-duration: 8s;
+  animation-delay: -4s;
+}
+.star:nth-child(4) {
+  --dx: 420px;
+  --dy: 260px;
+  color: #e25a3a;
+  animation-duration: 9s;
+  animation-delay: -2s;
+}
+.star:nth-child(5) {
+  --dx: -420px;
+  --dy: 40px;
+  color: #7eb36c;
+  animation-duration: 10s;
+  animation-delay: -6s;
+}
+.star:nth-child(6) {
+  --dx: 420px;
+  --dy: -60px;
+  color: #f5538a;
+  animation-duration: 7.5s;
+  animation-delay: -5s;
+}
+.star:nth-child(7) {
+  --dx: -260px;
+  --dy: -320px;
+  color: #f5d93b;
+  animation-duration: 6.5s;
+  animation-delay: -7s;
+}
+.star:nth-child(8) {
+  --dx: 260px;
+  --dy: 320px;
+  color: #7eb36c;
+  animation-duration: 8.5s;
+  animation-delay: -1.5s;
+}
+.star:nth-child(9) {
+  --dx: 40px;
+  --dy: -360px;
+  color: #e25a3a;
+  animation-duration: 9.5s;
+  animation-delay: -3.5s;
+}
+.star:nth-child(10) {
+  --dx: -40px;
+  --dy: 360px;
+  color: #f5538a;
+  animation-duration: 11s;
+  animation-delay: -5.5s;
+}
+.star:nth-child(11) {
+  --dx: -340px;
+  --dy: 140px;
+  color: #7eb36c;
+  animation-duration: 9s;
+  animation-delay: -8s;
+}
+.star:nth-child(12) {
+  --dx: 340px;
+  --dy: -140px;
+  color: #e25a3a;
+  animation-duration: 7.8s;
+  animation-delay: -9s;
+}
+.star:nth-child(13) {
+  --dx: -200px;
+  --dy: 280px;
+  color: #f5d93b;
+  animation-duration: 6.8s;
+  animation-delay: -2.2s;
+}
+.star:nth-child(14) {
+  --dx: 200px;
+  --dy: -280px;
+  color: #7eb36c;
+  animation-duration: 10.5s;
+  animation-delay: -4.1s;
+}
+.star:nth-child(15) {
+  --dx: -320px;
+  --dy: -120px;
+  color: #e25a3a;
+  animation-duration: 8.2s;
+  animation-delay: -6.4s;
+}
+.star:nth-child(16) {
+  --dx: 320px;
+  --dy: 120px;
+  color: #f5538a;
+  animation-duration: 7.2s;
+  animation-delay: -7.3s;
+}
+.star:nth-child(17) {
+  --dx: -120px;
+  --dy: 320px;
+  color: #f5d93b;
+  animation-duration: 9.8s;
+  animation-delay: -1.1s;
+}
+.star:nth-child(18) {
+  --dx: 120px;
+  --dy: -320px;
+  color: #7eb36c;
+  animation-duration: 8.8s;
+  animation-delay: -3.8s;
+}
