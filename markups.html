@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Гардероб</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background: #0f172a;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+      }
+
+      .wardrobe-block {
+        padding: 2.22vw 2.22vw 3.33vw;
+        border-radius: 1.67vw;
+        background: radial-gradient(circle at top, #1f2937 0, #020617 60%);
+        box-shadow: 0 1.67vw 4.17vw rgba(0, 0, 0, 0.7);
+        max-width: 62.5vw; /* ~900px */
+        width: 100%;
+        margin: 5vw auto;
+      }
+
+      .wardrobe-title {
+        color: #e5e7eb;
+        font-size: 1.39vw; /* ~20px */
+        font-weight: 600;
+        margin-bottom: 1.67vw;
+      }
+
+      /* Перекладина */
+      .wardrobe-rail {
+        position: relative;
+        height: 0.28vw; /* ~4px */
+        border-radius: 50vw;
+        background: rgba(148, 163, 184, 0.6);
+        margin-bottom: 2.78vw; /* ~40px */
+      }
+
+      /* Контейнер с 3D-перспективой */
+      .wardrobe-items {
+        display: flex;
+        justify-content: center;
+        gap: 0; /* без промежутков */
+        perspective: 83.33vw; /* ~1200px */
+      }
+
+      .wardrobe-item {
+        position: relative;
+        width: 7.5vw; /* чуть уже, чтобы плотнее висели */
+        height: 8.33vw; /* ~120px */
+        transform-style: preserve-3d;
+        transform-origin: top center;
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          z-index 0.2s ease;
+        cursor: pointer;
+        margin-left: -1.1vw; /* лёгкое перекрытие вещей */
+      }
+
+      .wardrobe-item:first-child {
+        margin-left: 0;
+      }
+
+      .wardrobe-square {
+        width: 100%;
+        height: 100%;
+        border-radius: 1.25vw; /* ~18px */
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        padding-bottom: 0.97vw; /* ~14px */
+        font-weight: 600;
+        font-size: 0.97vw; /* ~14px */
+        color: #020617;
+        box-shadow: 0 0.83vw 2.08vw rgba(15, 23, 42, 0.75);
+        background: linear-gradient(135deg, #facc15, #f97316);
+        transition: box-shadow 0.35s ease;
+      }
+
+      /* Разные цвета «вещей» */
+      .wardrobe-item:nth-child(2) .wardrobe-square {
+        background: linear-gradient(135deg, #38bdf8, #6366f1);
+      }
+
+      .wardrobe-item:nth-child(3) .wardrobe-square {
+        background: linear-gradient(135deg, #a855f7, #ec4899);
+      }
+
+      .wardrobe-item:nth-child(4) .wardrobe-square {
+        background: linear-gradient(135deg, #4ade80, #22c55e);
+      }
+
+      /* 3D-искажение по умолчанию (дуга, как плотный ряд вещей) */
+      .wardrobe-item:nth-child(1) {
+        transform: rotateX(40deg) rotateY(-12deg) translateZ(0);
+      }
+
+      .wardrobe-item:nth-child(2) {
+        transform: rotateX(40deg) rotateY(-6deg) translateZ(-0.7vw);
+      }
+
+      .wardrobe-item:nth-child(3) {
+        transform: rotateX(40deg) rotateY(0deg) translateZ(-1.2vw);
+      }
+
+      .wardrobe-item:nth-child(4) {
+        transform: rotateX(40deg) rotateY(6deg) translateZ(-0.7vw);
+      }
+
+      /* Ховер: вещь вылетает вперёд и выпрямляется */
+      .wardrobe-item:hover,
+      .wardrobe-item:focus-within {
+        transform: translateY(-2.08vw) translateZ(9.72vw) rotateX(0deg)
+          rotateY(0deg);
+        z-index: 10;
+      }
+
+      .wardrobe-item:hover .wardrobe-square,
+      .wardrobe-item:focus-within .wardrobe-square {
+        box-shadow: 0 2.08vw 4.86vw rgba(0, 0, 0, 0.75);
+      }
+    </style>
+  </head>
+  <body>
+    <section class="wardrobe-block">
+      <div class="wardrobe-rail"></div>
+      <div class="wardrobe-items">
+        <div class="wardrobe-item">
+          <div class="wardrobe-square">Тренч</div>
+        </div>
+        <div class="wardrobe-item">
+          <div class="wardrobe-square">Деним</div>
+        </div>
+        <div class="wardrobe-item">
+          <div class="wardrobe-square">Жакет</div>
+        </div>
+        <div class="wardrobe-item">
+          <div class="wardrobe-square">Платье</div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

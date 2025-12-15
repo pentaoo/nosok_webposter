@@ -98,10 +98,11 @@ hgroup,
 menu,
 nav,
 section {
-  display: block;
+  display: grid;
 }
 body {
   line-height: 1;
+  display: grid;
 }
 ol,
 ul {
