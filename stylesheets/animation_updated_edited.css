@@ -1,0 +1,1044 @@
+@keyframes sparkle_pink {
+  0% {
+    background-image: url(/images/sparkle_pink.svg);
+  }
+  33% {
+    background-image: url(/images/sparkle_yellow.svg);
+  }
+  66% {
+    background-image: url(/images/sparkle_green.svg);
+  }
+  100% {
+    background-image: url(/images/sparkle_red.svg);
+  }
+}
+/* Вылет носков из открывшейся дверцы */
+@keyframes sock-out-1 {
+  0% {
+    transform: translate(-40%, -35%) scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-160%, -130%) scale(2.3) rotate(-25deg);
+    opacity: 0;
+  }
+}
+@keyframes sock-out-2 {
+  0% {
+    transform: translate(10%, -45%) scale(1) rotate(-20deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(170%, -150%) scale(2.4) rotate(30deg);
+    opacity: 0;
+  }
+}
+@keyframes sock-out-3 {
+  0% {
+    transform: translate(-35%, 10%) scale(1) rotate(10deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(10%, 170%) scale(2.2) rotate(60deg);
+    opacity: 0;
+  }
+}
+@keyframes sock-out-4 {
+  0% {
+    transform: translate(-5%, 50%) scale(1) rotate(120deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(30%, 100%) scale(2.3) rotate(90deg);
+    opacity: 0;
+  }
+}
+@keyframes door-shake {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  25% {
+    transform: translate(0.25vw, -0.2vw) rotate(-0.8deg);
+  }
+  50% {
+    transform: translate(-0.25vw, 0.2vw) rotate(0.8deg);
+  }
+  75% {
+    transform: translate(0.2vw, 0.25vw) rotate(-0.5deg);
+  }
+  100% {
+    transform: translate(-0.2vw, -0.2vw) rotate(0.5deg);
+  }
+}
+
+/* Резкие скачки носков (дискретные позиции) */
+@keyframes sock-jump-1 {
+  0%,
+  8% {
+    transform: translate(-40%, -35%) rotate(10deg);
+  }
+  9%,
+  24% {
+    transform: translate(35%, -40%) rotate(45deg);
+  }
+  25%,
+  40% {
+    transform: translate(40%, 35%) rotate(90deg);
+  }
+  41%,
+  56% {
+    transform: translate(-35%, 40%) rotate(135deg);
+  }
+  57%,
+  72% {
+    transform: translate(15%, 10%) rotate(200deg);
+  }
+  73%,
+  88% {
+    transform: translate(-10%, -5%) rotate(260deg);
+  }
+  89%,
+  100% {
+    transform: translate(-40%, -35%) rotate(310deg);
+  }
+}
+
+@keyframes sock-jump-2 {
+  0%,
+  8% {
+    transform: translate(10%, -45%) rotate(-15deg);
+  }
+  9%,
+  24% {
+    transform: translate(40%, -5%) rotate(20deg);
+  }
+  25%,
+  40% {
+    transform: translate(25%, 40%) rotate(70deg);
+  }
+  41%,
+  56% {
+    transform: translate(-30%, 25%) rotate(130deg);
+  }
+  57%,
+  72% {
+    transform: translate(-42%, -10%) rotate(190deg);
+  }
+  73%,
+  88% {
+    transform: translate(5%, 5%) rotate(250deg);
+  }
+  89%,
+  100% {
+    transform: translate(10%, -45%) rotate(305deg);
+  }
+}
+
+@keyframes sock-jump-3 {
+  0%,
+  8% {
+    transform: translate(-35%, 10%) rotate(5deg);
+  }
+  9%,
+  24% {
+    transform: translate(30%, -30%) rotate(40deg);
+  }
+  25%,
+  40% {
+    transform: translate(40%, 20%) rotate(90deg);
+  }
+  41%,
+  56% {
+    transform: translate(-15%, 40%) rotate(140deg);
+  }
+  57%,
+  72% {
+    transform: translate(-40%, -25%) rotate(190deg);
+  }
+  73%,
+  88% {
+    transform: translate(5%, -10%) rotate(245deg);
+  }
+  89%,
+  100% {
+    transform: translate(-35%, 10%) rotate(295deg);
+  }
+}
+@keyframes sock-jump-4 {
+  0%,
+  8% {
+    transform: translate(-30%, 20%) rotate(-40deg);
+  }
+  9%,
+  24% {
+    transform: translate(30%, -30%) rotate(40deg);
+  }
+  25%,
+  40% {
+    transform: translate(40%, 15%) rotate(100deg);
+  }
+  41%,
+  56% {
+    transform: translate(-135%, 60%) rotate(170deg);
+  }
+  57%,
+  72% {
+    transform: translate(-60%, -25%) rotate(130deg);
+  }
+  73%,
+  88% {
+    transform: translate(20%, -10%) rotate(215deg);
+  }
+  89%,
+  100% {
+    transform: translate(-90%, 100%) rotate(30deg);
+  }
+}
+/* SPIN вариации */
+@keyframes star_spin_a {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes star_spin_b {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  25% {
+    transform: rotate(110deg) scale(1.02);
+  }
+  55% {
+    transform: rotate(210deg) scale(0.98);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes star_spin_c {
+  0% {
+    transform: rotate(-18deg) scale(1);
+  }
+  50% {
+    transform: rotate(22deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(-18deg) scale(1);
+  }
+}
+
+@keyframes star_spin_d {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  18% {
+    transform: rotate(120deg) scale(1.04);
+  }
+  30% {
+    transform: rotate(120deg) scale(1.04);
+  }
+  62% {
+    transform: rotate(300deg) scale(0.98);
+  }
+  74% {
+    transform: rotate(300deg) scale(0.98);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes star_spin_e {
+  0% {
+    transform: rotate(0) skewX(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(220deg) skewX(-3deg) scale(1.06);
+  }
+  100% {
+    transform: rotate(360deg) skewX(0deg) scale(1);
+  }
+}
+
+@keyframes star_spin_f {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes star_spin_g {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  60% {
+    transform: rotate(260deg) scale(1.03);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes star_spin_h {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  40% {
+    transform: rotate(200deg) scale(1.06);
+  }
+  75% {
+    transform: rotate(330deg) scale(0.98);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes star_spin_i {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  20% {
+    transform: rotate(25deg) scale(1.02);
+  }
+  45% {
+    transform: rotate(55deg) scale(0.99);
+  }
+  70% {
+    transform: rotate(300deg) scale(1.05);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes star_spin_j {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  50% {
+    transform: rotate(190deg) scale(1.02);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* PULSE вариации */
+@keyframes star_pulse_a {
+  0%,
+  100% {
+    transform: rotate(var(--r, 0deg)) scale(0.92);
+  }
+  50% {
+    transform: rotate(var(--r, 0deg)) scale(1.18);
+  }
+}
+
+@keyframes star_pulse_b {
+  0%,
+  100% {
+    transform: rotate(var(--r, 0deg)) scale(1);
+  }
+  40% {
+    transform: rotate(var(--r, 0deg)) scale(1.22);
+  }
+  60% {
+    transform: rotate(var(--r, 0deg)) scale(0.96);
+  }
+}
+
+@keyframes star_pulse_c {
+  0%,
+  100% {
+    transform: rotate(var(--r, 0deg)) scale(0.96);
+  }
+  50% {
+    transform: rotate(var(--r, 0deg)) scale(1.12);
+  }
+}
+
+@keyframes star_pulse_d {
+  0%,
+  100% {
+    transform: rotate(var(--r, 0deg)) scale(0.9);
+  }
+  50% {
+    transform: rotate(var(--r, 0deg)) scale(1.1);
+  }
+}
+
+@keyframes star_pulse_e {
+  0%,
+  100% {
+    transform: rotate(var(--r, 0deg)) scale(0.88);
+  }
+  20% {
+    transform: rotate(var(--r, 0deg)) scale(0.95);
+  }
+  55% {
+    transform: rotate(var(--r, 0deg)) scale(1.28);
+  }
+  80% {
+    transform: rotate(var(--r, 0deg)) scale(0.98);
+  }
+}
+
+@keyframes star_pulse_f {
+  0%,
+  100% {
+    transform: rotate(var(--r, 0deg)) scale(0.94);
+  }
+  50% {
+    transform: rotate(var(--r, 0deg)) scale(1.08);
+  }
+}
+
+@keyframes star_pulse_g {
+  0%,
+  100% {
+    transform: rotate(var(--r, 0deg)) scale(1);
+  }
+  50% {
+    transform: rotate(var(--r, 0deg)) scale(1.18);
+  }
+}
+
+@keyframes star_pulse_h {
+  0%,
+  100% {
+    transform: rotate(var(--r, 0deg)) scale(0.92);
+  }
+  35% {
+    transform: rotate(var(--r, 0deg)) scale(1.06);
+  }
+  70% {
+    transform: rotate(var(--r, 0deg)) scale(1.2);
+  }
+}
+
+/* WOBBLE (микро-наклоны/живость) */
+@keyframes star_wobble_a {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(4deg) scale(1.03);
+  }
+  50% {
+    transform: rotate(-3deg) scale(0.99);
+  }
+  75% {
+    transform: rotate(2deg) scale(1.02);
+  }
+}
+
+@keyframes star_wobble_b {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  20% {
+    transform: rotate(-6deg) scale(1.02);
+  }
+  45% {
+    transform: rotate(5deg) scale(0.98);
+  }
+  70% {
+    transform: rotate(-3deg) scale(1.03);
+  }
+}
+
+/* TWINKLE вариации */
+@keyframes star_twinkle_a {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.55;
+  }
+  72% {
+    opacity: 1;
+  }
+}
+
+@keyframes star_twinkle_b {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  15% {
+    opacity: 1;
+  }
+  35% {
+    opacity: 0.45;
+  }
+  55% {
+    opacity: 0.95;
+  }
+  75% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes star_twinkle_c {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  10% {
+    opacity: 0.95;
+  }
+  22% {
+    opacity: 0.35;
+  }
+  34% {
+    opacity: 1;
+  }
+  60% {
+    opacity: 0.3;
+  }
+  86% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes star_twinkle_d {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  28% {
+    opacity: 0.95;
+  }
+  44% {
+    opacity: 0.5;
+  }
+  62% {
+    opacity: 1;
+  }
+  78% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes star_twinkle_e {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  12% {
+    opacity: 1;
+  }
+  24% {
+    opacity: 0.25;
+  }
+  48% {
+    opacity: 0.95;
+  }
+  66% {
+    opacity: 0.35;
+  }
+  84% {
+    opacity: 1;
+  }
+}
+
+/* SHIMMER (яркость/свечение) */
+@keyframes star_shimmer_a {
+  0%,
+  100% {
+    filter: brightness(1) drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+  45% {
+    filter: brightness(1.18) drop-shadow(0 0 10px rgba(255, 255, 255, 0.32));
+  }
+  65% {
+    filter: brightness(1.06) drop-shadow(0 0 6px rgba(255, 255, 255, 0.2));
+  }
+}
+
+@keyframes star_shimmer_b {
+  0%,
+  100% {
+    filter: brightness(1) drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+  50% {
+    filter: brightness(1.25) drop-shadow(0 0 12px rgba(255, 255, 255, 0.38));
+  }
+}
+
+/* === WARDROBE STARS: "живое" движение (одна анимация на transform) === */
+@keyframes wardrobe_live_1 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.96);
+  }
+  18% {
+    transform: translate(0.1vw, -0.06vw) rotate(72deg) scale(1.03);
+  }
+  36% {
+    transform: translate(-0.08vw, 0.08vw) rotate(148deg) scale(0.98);
+  }
+  52% {
+    transform: translate(0.06vw, 0.1vw) rotate(214deg) scale(1.06);
+  }
+  70% {
+    transform: translate(-0.1vw, -0.04vw) rotate(302deg) scale(1.01);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(0.96);
+  }
+}
+
+@keyframes wardrobe_live_2 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.95) skewX(0deg);
+  }
+  22% {
+    transform: translate(0.08vw, -0.04vw) rotate(88deg) scale(1.02)
+      skewX(-1.2deg);
+  }
+  40% {
+    transform: translate(-0.1vw, 0.07vw) rotate(162deg) scale(0.98)
+      skewX(0.6deg);
+  }
+  56% {
+    transform: translate(0.05vw, 0.1vw) rotate(142deg) scale(1.05)
+      skewX(-0.8deg);
+  }
+  78% {
+    transform: translate(-0.06vw, -0.05vw) rotate(292deg) scale(1.01)
+      skewX(0.4deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(0.95) skewX(0deg);
+  }
+}
+
+@keyframes wardrobe_live_3 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.97);
+  }
+  16% {
+    transform: translate(-0.06vw, -0.02vw) rotate(64deg) scale(1.02);
+  }
+  32% {
+    transform: translate(0.1vw, 0.06vw) rotate(136deg) scale(0.99);
+  }
+  48% {
+    transform: translate(-0.04vw, 0.1vw) rotate(208deg) scale(1.06);
+  }
+  62% {
+    transform: translate(0.02vw, 0.02vw) rotate(248deg) scale(1.13);
+  }
+  68% {
+    transform: translate(-0.08vw, -0.04vw) rotate(272deg) scale(1.02);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(0.97);
+  }
+}
+
+@keyframes wardrobe_live_4 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.94) skewY(0deg);
+  }
+  20% {
+    transform: translate(0.12vw, 0.02vw) rotate(92deg) scale(1.04) skewY(0.6deg);
+  }
+  38% {
+    transform: translate(-0.08vw, 0.08vw) rotate(170deg) scale(0.99)
+      skewY(-0.7deg);
+  }
+  55% {
+    transform: translate(0.04vw, -0.1vw) rotate(230deg) scale(1.07)
+      skewY(0.5deg);
+  }
+  74% {
+    transform: translate(-0.12vw, -0.02vw) rotate(318deg) scale(1.01)
+      skewY(-0.4deg);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(0.94) skewY(0deg);
+  }
+}
+
+@keyframes wardrobe_live_5 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.98);
+  }
+  25% {
+    transform: translate(0.08vw, -0.1vw) rotate(110deg) scale(1.02);
+  }
+  45% {
+    transform: translate(0.1vw, 0.06vw) rotate(170deg) scale(0.99);
+  }
+  60% {
+    transform: translate(-0.08vw, 0.1vw) rotate(250deg) scale(1.05);
+  }
+  78% {
+    transform: translate(-0.1vw, -0.06vw) rotate(320deg) scale(1.01);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(0.98);
+  }
+}
+
+@keyframes wardrobe_live_6 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.95);
+  }
+  18% {
+    transform: translate(-0.06vw, 0.08vw) rotate(78deg) scale(1.01);
+  }
+  36% {
+    transform: translate(0.1vw, 0.02vw) rotate(158deg) scale(0.99);
+  }
+  54% {
+    transform: translate(-0.04vw, -0.1vw) rotate(238deg) scale(1.06);
+  }
+  60% {
+    transform: translate(0.02vw, -0.02vw) rotate(252deg) scale(1.14);
+  }
+  66% {
+    transform: translate(-0.08vw, 0.04vw) rotate(270deg) scale(1.03);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(0.95);
+  }
+}
+
+@keyframes wardrobe_live_7 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.96);
+  }
+  24% {
+    transform: translate(0.1vw, 0.04vw) rotate(120deg) scale(1.04);
+  }
+  36% {
+    transform: translate(0.1vw, 0.04vw) rotate(140deg) scale(1.02);
+  }
+  58% {
+    transform: translate(-0.1vw, -0.06vw) rotate(250deg) scale(1.06);
+  }
+  74% {
+    transform: translate(-0.1vw, -0.06vw) rotate(286deg) scale(1.02);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(0.96);
+  }
+}
+
+@keyframes wardrobe_live_8 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.97);
+  }
+  20% {
+    transform: translate(-0.08vw, 0.06vw) rotate(96deg) scale(1.03);
+  }
+  42% {
+    transform: translate(0.06vw, 0.1vw) rotate(188deg) scale(0.99);
+  }
+  64% {
+    transform: translate(0.1vw, -0.06vw) rotate(286deg) scale(1.06);
+  }
+  90% {
+    transform: translate(-0.02vw, -0.02vw) rotate(392deg) scale(1.01);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(0.97);
+  }
+}
+
+@keyframes wardrobe_live_9 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.94);
+  }
+  14% {
+    transform: translate(0.06vw, -0.08vw) rotate(56deg) scale(1);
+  }
+  28% {
+    transform: translate(-0.1vw, 0.06vw) rotate(128deg) scale(1.04);
+  }
+  50% {
+    transform: translate(0.08vw, 0.1vw) rotate(214deg) scale(0.98);
+  }
+  72% {
+    transform: translate(-0.06vw, -0.1vw) rotate(306deg) scale(1.06);
+  }
+  100% {
+    transform: translate(0, 0) rotate(360deg) scale(0.94);
+  }
+}
+
+@keyframes wardrobe_live_10 {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.96);
+  }
+  22% {
+    transform: translate(-0.1vw, -0.02vw) rotate(-82deg) scale(1.02);
+  }
+  44% {
+    transform: translate(0.08vw, 0.1vw) rotate(-160deg) scale(0.99);
+  }
+  66% {
+    transform: translate(0.1vw, -0.06vw) rotate(-256deg) scale(1.06);
+  }
+  84% {
+    transform: translate(-0.06vw, 0.04vw) rotate(-312deg) scale(1.01);
+  }
+  100% {
+    transform: translate(0, 0) rotate(-360deg) scale(0.96);
+  }
+}
+
+/* Свечение без потери тени (filter всегда включает drop-shadow) */
+@keyframes wardrobe_glow_a {
+  0%,
+  100% {
+    filter: drop-shadow(0 0.45vw 0.85vw rgba(0, 0, 0, 0.18)) brightness(1)
+      contrast(1);
+  }
+  45% {
+    filter: drop-shadow(0 0.55vw 0.95vw rgba(0, 0, 0, 0.22)) brightness(1.12)
+      contrast(1.05);
+  }
+  65% {
+    filter: drop-shadow(0 0.4vw 0.8vw rgba(0, 0, 0, 0.16)) brightness(1.04)
+      contrast(1.02);
+  }
+}
+
+@keyframes wardrobe_glow_b {
+  0%,
+  100% {
+    filter: drop-shadow(0 0.45vw 0.85vw rgba(0, 0, 0, 0.18)) brightness(1)
+      contrast(1);
+  }
+  30% {
+    filter: drop-shadow(0 0.7vw 1.1vw rgba(0, 0, 0, 0.26)) brightness(1.18)
+      contrast(1.08);
+  }
+  60% {
+    filter: drop-shadow(0 0.5vw 0.9vw rgba(0, 0, 0, 0.2)) brightness(1.06)
+      contrast(1.02);
+  }
+}
+
+@keyframes wardrobe_glow_c {
+  0%,
+  100% {
+    filter: drop-shadow(0 0.45vw 0.85vw rgba(0, 0, 0, 0.18)) brightness(1);
+  }
+  25% {
+    filter: drop-shadow(0 0.6vw 1vw rgba(0, 0, 0, 0.24)) brightness(1.1);
+  }
+  50% {
+    filter: drop-shadow(0 0.42vw 0.82vw rgba(0, 0, 0, 0.17)) brightness(1.02);
+  }
+  75% {
+    filter: drop-shadow(0 0.68vw 1.08vw rgba(0, 0, 0, 0.26)) brightness(1.14);
+  }
+}
+
+/* ============================================================
+   SOCK + RAINBOW STAR TRAIL (no JS) — keyframes
+   ============================================================ */
+@keyframes trail_sock_float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-6deg) scaleX(-1);
+  }
+  42% {
+    transform: translateY(-1.5vw) rotate(6deg) scaleX(-1);
+  }
+  68% {
+    transform: translateY(-0.7vw) rotate(2deg) scaleX(-1);
+  }
+}
+
+@keyframes trail_sock_glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 1.1vw 1.8vw rgba(0, 0, 0, 0.35)) brightness(1);
+  }
+  45% {
+    filter: drop-shadow(0 1.35vw 2.05vw rgba(0, 0, 0, 0.4)) brightness(1.08);
+  }
+  70% {
+    filter: drop-shadow(0 1.2vw 1.9vw rgba(0, 0, 0, 0.36)) brightness(1.03);
+  }
+}
+
+@keyframes trail_drift {
+  0%,
+  100% {
+    transform: translateY(-50%) translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(calc(-50% - 0.7vw)) translateX(-0.35vw);
+    opacity: 1;
+  }
+}
+
+/* Вылет звезды: от носка (справа) влево, с растворением */
+@keyframes trail_star_emit {
+  0% {
+    transform: translateX(0) translateY(0) scale(0.35) rotate(0deg);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  62% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-72vw) translateY(var(--dy)) scale(1.18)
+      rotate(250deg);
+    opacity: 0;
+  }
+}
+
+/* “Живость”: лёгкий воббл */
+@keyframes trail_star_wiggle {
+  0%,
+  100% {
+    transform: rotate(-7deg);
+  }
+  35% {
+    transform: rotate(6deg);
+  }
+  70% {
+    transform: rotate(-3deg);
+  }
+}
+
+/* Мягкое “дыхание” */
+@keyframes trail_star_breath {
+  0%,
+  100% {
+    transform: scale(0.92);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
+
+/* Мерцание */
+@keyframes trail_star_twinkle {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 1.05vw rgba(255, 255, 255, 0.18))
+      drop-shadow(0 0.45vw 0.85vw rgba(0, 0, 0, 0.18)) brightness(1);
+    opacity: 0.75;
+  }
+  45% {
+    filter: drop-shadow(0 0 1.9vw rgba(255, 255, 255, 0.35))
+      drop-shadow(0 0.55vw 0.95vw rgba(0, 0, 0, 0.2)) brightness(1.22);
+    opacity: 1;
+  }
+  75% {
+    filter: drop-shadow(0 0 1.4vw rgba(255, 255, 255, 0.26))
+      drop-shadow(0 0.42vw 0.82vw rgba(0, 0, 0, 0.16)) brightness(1.06);
+    opacity: 0.9;
+  }
+}
+@keyframes sock_phase {
+  0% {
+    opacity: 0;
+    transform: rotate(-30deg) scale(0.55);
+    filter: brightness(0.95);
+  }
+  12% {
+    opacity: 1;
+    transform: rotate(10deg) scale(1.1);
+    filter: brightness(1.05);
+  }
+  32% {
+    opacity: 1;
+    transform: rotate(55deg) scale(1.35);
+    filter: brightness(1.12);
+  }
+  55% {
+    opacity: 1;
+    transform: rotate(90deg) scale(1.1);
+    filter: brightness(1.02);
+  }
+  78% {
+    opacity: 0;
+    transform: rotate(130deg) scale(0.6);
+    filter: brightness(0.95);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(160deg) scale(0.55);
+    filter: brightness(0.95);
+  }
+}
+
+/* Микро-движение для “живости” */
+@keyframes sock_jitter {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  35% {
+    transform: translate(0.18vw, -0.1vw) rotate(-3deg) scale(1.03);
+  }
+  70% {
+    transform: translate(-0.14vw, 0.14vw) rotate(2deg) scale(0.99);
+  }
+}
+
+/* Смена “типа носка” без JS (как у вас sparkle_pink) */
+@keyframes sock_cycle {
+  0% {
+    background-image: url("/images/sock_pink.svg");
+  }
+  25% {
+    background-image: url("/images/sock_yellow.svg");
+  }
+  50% {
+    background-image: url("/images/sock_green.svg");
+  }
+  75% {
+    background-image: url("/images/sock_white.svg");
+  }
+  100% {
+    background-image: url("/images/sock_pink.svg");
+  }
+}
+
+/* Само вращение вокруг угла (угол = 0,0) */
+@keyframes sock_orbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* respect reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .sock-carousel {
+    animation: none;
+  }
+  .sock-carousel .sock_pink::before {
+    animation: none;
+    opacity: 1;
+  }
+}

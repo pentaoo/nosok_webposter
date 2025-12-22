@@ -1,0 +1,86 @@
+:root { --size: min(34vmin, 320px); --gap: clamp(8px, 1.8vmin, 16px); --bg:
+#0f1115; --card: #ffffff; } /* Сцена */ .scene { width: var(--size); height:
+var(--size); position: relative; perspective: 900px; isolation: isolate; } /*
+Общий контейнер: мягкое “дыхание” и лёгкий tilt */ .core { position: absolute;
+inset: 0; transform-style: preserve-3d; animation: core 2800ms
+cubic-bezier(0.55, 0, 0.25, 1) infinite; filter: drop-shadow(0 22px 30px rgba(0,
+0, 0, 0.35)); } /* 4 части */ .piece { position: absolute; width: 50%; height:
+50%; background: linear-gradient( 135deg, rgba(255, 255, 255, 0.95), rgba(255,
+255, 255, 0.75) ); border-radius: clamp(10px, 2.2vmin, 18px); box-shadow: inset
+0 1px 0 rgba(255, 255, 255, 0.65), 0 10px 26px rgba(0, 0, 0, 0.18); transform:
+translate3d(0, 0, 0); animation: split 2800ms cubic-bezier(0.65, 0, 0.25, 1)
+infinite; will-change: transform, filter, opacity; overflow: hidden; } /*
+Позиции квадрантов */ .tl { top: 0; left: 0; } .tr { top: 0; right: 0; } .bl {
+bottom: 0; left: 0; } .br { bottom: 0; right: 0; } /* Внутренний “блик” для
+эмоции */ .piece::after { content: ""; position: absolute; inset: -30%;
+background: radial-gradient( circle at 30% 25%, rgba(255, 255, 255, 0.75),
+rgba(255, 255, 255, 0) 55% ); transform: translate3d(0, 0, 0); opacity: 0.45;
+mix-blend-mode: overlay; animation: shimmer 2800ms cubic-bezier(0.7, 0, 0.2, 1)
+infinite; } /* Нелинейность: разный тайминг и задержки у частей */ .tl {
+animation-delay: 0ms; } .tr { animation-delay: 60ms; } .bl { animation-delay:
+120ms; } .br { animation-delay: 180ms; } .tl::after { animation-delay: 0ms; }
+.tr::after { animation-delay: 80ms; } .bl::after { animation-delay: 140ms; }
+.br::after { animation-delay: 200ms; } /* Фоновые “пульсы” (тонко, чтобы не
+отвлекать) */ .pulse { position: absolute; inset: -18%; border-radius: 28%;
+background: radial-gradient( circle at 50% 50%, rgba(255, 255, 255, 0.14),
+rgba(255, 255, 255, 0) 62% ); filter: blur(10px); transform: translateZ(-120px);
+animation: pulse 2800ms cubic-bezier(0.55, 0, 0.25, 1) infinite; pointer-events:
+none; z-index: -1; } /* Движение контейнера (эмоциональная “пружина”) */
+@keyframes core { 0% { transform: rotateX(0deg) rotateY(0deg) scale(1); } 18% {
+transform: rotateX(6deg) rotateY(-10deg) scale(1.02); } 42% { transform:
+rotateX(-8deg) rotateY(12deg) scale(0.985); } 62% { transform: rotateX(4deg)
+rotateY(-6deg) scale(1.01); } 100% { transform: rotateX(0deg) rotateY(0deg)
+scale(1); } } /* Основная анимация “распад/сборка”: 0–22%: собран 22–50%: распад
+с ускорением 50–74%: зависание “в воздухе” 74–100%: сборка с лёгким
+перерегулированием */ @keyframes split { 0%, 22% { transform: translate3d(0, 0,
+0) rotate(0deg) scale(1); filter: blur(0); } /* распад — каждая часть уходит в
+свой угол + чуть по Z */ 50% { filter: blur(0.2px); } /* удержание
+“разобранного” состояния */ 74% { filter: blur(0); } /* сборка обратно — с
+небольшим перерегулированием */ 88% { transform: translate3d(0, 0, 0)
+rotate(0deg) scale(1.035); } 100% { transform: translate3d(0, 0, 0) rotate(0deg)
+scale(1); } } /* Индивидуальные траектории через transform-origin + доп.
+смещения */ .tl { transform-origin: 100% 100%; } .tr { transform-origin: 0%
+100%; } .bl { transform-origin: 100% 0%; } .br { transform-origin: 0% 0%; } /*
+Переопределяем ключевые точки для каждого квадранта (чуть разные амплитуды) */
+.tl { --dx: calc(-1 * var(--gap)); --dy: calc(-1 * var(--gap)); --rz: -8deg;
+--z: 34px; } .tr { --dx: var(--gap); --dy: calc(-1 * var(--gap)); --rz: 10deg;
+--z: 42px; } .bl { --dx: calc(-1 * var(--gap)); --dy: var(--gap); --rz: 12deg;
+--z: 28px; } .br { --dx: var(--gap); --dy: var(--gap); --rz: -10deg; --z: 36px;
+} /* Добавим реальное разлёт/сборку через keyframe-подстановки */ .piece { /*
+“пружина” + нелинейная фаза */ animation-name: split, drift; animation-duration:
+2800ms, 2800ms; animation-timing-function: cubic-bezier(0.65, 0, 0.25, 1),
+cubic-bezier(0.55, 0, 0.25, 1); animation-iteration-count: infinite, infinite; }
+/* drift отвечает именно за разлёт по углам и Z */ @keyframes drift { 0%, 22% {
+transform: translate3d(0, 0, 0) rotate(0deg) scale(1); } 40% { transform:
+translate3d( calc(var(--dx) * 2.2), calc(var(--dy) * 2.2), var(--z) )
+rotate(var(--rz)) scale(0.98); } 55% { transform: translate3d( calc(var(--dx) *
+3.1), calc(var(--dy) * 3.1), calc(var(--z) * 1.15) ) rotate(calc(var(--rz) *
+1.15)) scale(0.965); } 74% { transform: translate3d( calc(var(--dx) * 2.7),
+calc(var(--dy) * 2.7), calc(var(--z) * 1.05) ) rotate(calc(var(--rz) * 1.05))
+scale(0.975); } 88% { transform: translate3d( calc(var(--dx) * 0.8),
+calc(var(--dy) * 0.8), calc(var(--z) * 0.25) ) rotate(calc(var(--rz) * 0.25))
+scale(1.02); } 100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); } }
+@keyframes shimmer { 0%, 22% { transform: translate3d(0, 0, 0) rotate(0deg);
+opacity: 0.3; } 50% { transform: translate3d(10%, -6%, 0) rotate(16deg);
+opacity: 0.55; } 74% { transform: translate3d(-6%, 8%, 0) rotate(-10deg);
+opacity: 0.45; } 100% { transform: translate3d(0, 0, 0) rotate(0deg); opacity:
+0.3; } } @keyframes pulse { 0%, 22% { transform: translateZ(-140px) scale(0.9);
+opacity: 0; } 40% { transform: translateZ(-120px) scale(1.05); opacity: 0.75; }
+74% { transform: translateZ(-120px) scale(1.12); opacity: 0.55; } 100% {
+transform: translateZ(-140px) scale(0.95); opacity: 0; } } /* Сборный вид: чтобы
+казалось единым квадратом — убираем щели в собранной фазе */ .mask { position:
+absolute; inset: 0; border-radius: clamp(14px, 2.6vmin, 22px); background:
+rgba(255, 255, 255, 0.08); mix-blend-mode: soft-light; pointer-events: none; }
+/* Тонкая адаптация под prefers-reduced-motion */ @media
+(prefers-reduced-motion: reduce) { .core, .piece, .piece::after, .pulse {
+animation: none !important; } }
+<div class="scene">
+  <div class="pulse"></div>
+  <div class="core">
+    <div class="piece tl"></div>
+    <div class="piece tr"></div>
+    <div class="piece bl"></div>
+    <div class="piece br"></div>
+    <div class="mask"></div>
+  </div>
+</div>

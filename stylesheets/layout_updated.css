@@ -1,0 +1,1417 @@
+:root {
+  --pink: #fe4aae;
+  --yellow: #ffd519;
+  --black: #000000;
+  --red: #e74349;
+  --green: #66a46c;
+  --white: #ffffff;
+}
+
+/* базовые вещи */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--white);
+}
+
+/* === 12-колоночная сетка для первого экрана === */
+
+#first-block {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+.logo-block {
+  position: relative; /* база для абсолютного starfield */
+  overflow: hidden; /* чтобы звезды не вылезали за блок */
+  grid-column: 1 / 8;
+  height: 100%;
+  border: 0.3125vw solid var(--black);
+}
+/* слой со звездами — под логотипом */
+.logo-block .starfield {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  z-index: 1;
+  pointer-events: none; /* чтобы не мешал кликам */
+}
+.logo {
+  position: relative;
+  z-index: 2;
+  grid-column: 2 / 7;
+}
+/* логотип — поверх */
+.logo-block .logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* поверх starfield */
+  max-width: 70%;
+  max-height: 70%;
+  width: auto;
+  height: auto;
+}
+
+/* логотип поверх */
+.logo-block .star {
+  position: absolute;
+
+  left: var(--x, 50%);
+  top: var(--y, 50%);
+
+  width: var(--size, 4vw);
+  height: var(--size, 4vw);
+
+  background-color: var(--c, #ff4db8);
+  -webkit-mask: url("/images/sparkle_pink.svg") center / contain no-repeat;
+  mask: url("/images/sparkle_pink.svg") center / contain no-repeat;
+
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(var(--start-scale, 1));
+  will-change: left, top, opacity, transform;
+
+  animation: fly-to-center var(--dur, 0.5s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  animation-fill-mode: both;
+}
+
+@keyframes fly-to-center {
+  0% {
+    left: var(--x);
+    top: var(--y);
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(var(--start-scale, 2));
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 50%;
+    top: 50%;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25);
+  }
+}
+
+/* рандом раскладка */
+
+.logo-block .star:nth-child(1) {
+  --x: 6%;
+  --y: 18%;
+  --c: var(--yellow);
+  --size: 4.8vw;
+  --dur: 1.8s;
+  --delay: -0.2s;
+}
+
+.logo-block .star:nth-child(2) {
+  --x: 82%;
+  --y: 12%;
+  --c: var(--pink);
+  --size: 3.6vw;
+  --dur: 1.6s;
+  --delay: -0.9s;
+}
+
+.logo-block .star:nth-child(3) {
+  --x: 12%;
+  --y: 76%;
+  --c: var(--green);
+  --size: 4.2vw;
+  --dur: 2s;
+  --delay: -0.6s;
+}
+
+.logo-block .star:nth-child(4) {
+  --x: 92%;
+  --y: 68%;
+  --c: var(--green);
+  --size: 3.2vw;
+  --dur: 1.7s;
+  --delay: -1.3s;
+}
+
+.logo-block .star:nth-child(5) {
+  --x: 48%;
+  --y: 4%;
+  --c: var(--pink);
+  --size: 2.9vw;
+  --dur: 1.5s;
+  --delay: -0.4s;
+}
+
+.logo-block .star:nth-child(6) {
+  --x: 52%;
+  --y: 94%;
+  --c: var(--yellow);
+  --size: 3.9vw;
+  --dur: 1.9s;
+  --delay: -1s;
+}
+
+.logo-block .star:nth-child(7) {
+  --x: 3%;
+  --y: 48%;
+  --c: var(--green);
+  --size: 2.5vw;
+  --dur: 1.7s;
+  --delay: -1.6s;
+}
+
+.logo-block .star:nth-child(8) {
+  --x: 97%;
+  --y: 40%;
+  --c: var(--pink);
+  --size: 3.1vw;
+  --dur: 2.1s;
+  --delay: -0.7s;
+}
+
+.logo-block .star:nth-child(9) {
+  --x: 18%;
+  --y: 10%;
+  --c: var(--yellow);
+  --size: 2.6vw;
+  --dur: 1.4s;
+  --delay: -0.3s;
+}
+
+.logo-block .star:nth-child(10) {
+  --x: 88%;
+  --y: 24%;
+  --c: var(--red);
+  --size: 2.2vw;
+  --dur: 1.6s;
+  --delay: -1.1s;
+}
+
+.logo-block .star:nth-child(11) {
+  --x: 10%;
+  --y: 60%;
+  --c: var(--pink);
+  --size: 3vw;
+  --dur: 1.8s;
+  --delay: -0.8s;
+}
+
+.logo-block .star:nth-child(12) {
+  --x: 75%;
+  --y: 88%;
+  --c: var(--green);
+  --size: 2.7vw;
+  --dur: 1.5s;
+  --delay: -1.4s;
+}
+
+.logo-block .star:nth-child(13) {
+  --x: 30%;
+  --y: 92%;
+  --c: var(--yellow);
+  --size: 3.3vw;
+  --dur: 1.9s;
+  --delay: -0.5s;
+}
+
+.logo-block .star:nth-child(14) {
+  --x: 65%;
+  --y: 8%;
+  --c: var(--green);
+  --size: 2.1vw;
+  --dur: 1.4s;
+  --delay: -1.7s;
+}
+
+.logo-block .star:nth-child(15) {
+  --x: 94%;
+  --y: 52%;
+  --c: var(--pink);
+  --size: 2.8vw;
+  --dur: 1.7s;
+  --delay: -0.9s;
+}
+
+.logo-block .star:nth-child(16) {
+  --x: 8%;
+  --y: 30%;
+  --c: var(--yellow);
+  --size: 2.4vw;
+  --dur: 2.2s;
+  --delay: -1.2s;
+}
+
+.sock-block {
+  grid-column: 8 / 13;
+  background: var(--yellow);
+  border: 0.3125vw solid var(--black);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sock-block .sock_rotate {
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+  transform: rotate(30deg);
+}
+.sock-carousel {
+  position: absolute;
+
+  /* ВЕРХНИЙ ПРАВЫЙ УГОЛ */
+  left: 100vw;
+  top: 0;
+
+  width: 1px;
+  height: 1px;
+
+  z-index: 999;
+  pointer-events: none;
+
+  transform-origin: 0 0;
+  animation: sock_orbit 9.5s linear infinite;
+}
+
+/* один носок: НЕ переносим left/top на 100vw — это делает контейнер */
+.sock-carousel .sock_pink {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  /* БОЛЬШЕ РАЗМЕР */
+  width: 20vw;
+  height: 20vw;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  /* БАЗОВАЯ ПОЗИЦИЯ (вектор орбиты). Дальше nth-child разнесёт углами */
+  transform: rotate(0deg) translate(-34vw, 34vw);
+  opacity: 1;
+  filter: drop-shadow(0 0.8vw 1.4vw rgba(0, 0, 0, 0.22));
+}
+
+.sock-carousel:hover {
+  animation-duration: 5.5s;
+}
+.sock-carousel:hover .sock_pink::before {
+  filter: brightness(1.15);
+}
+
+.sock-carousel .sock_pink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: url("/images/sock_pink.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  transform-origin: 55% 40%;
+  will-change: transform, opacity, filter;
+
+  animation: sock_phase 2.8s ease-in-out infinite,
+    sock_jitter 1.1s ease-in-out infinite,
+    sock_cycle 2.6s steps(1, end) infinite;
+}
+
+/* Раскладываем фазы (задержки) для "карусели" */
+.sock-carousel .sock_pink:nth-child(1) {
+  transform: rotate(0deg) translate(-34vw, 34vw);
+}
+.sock-carousel .sock_pink:nth-child(2) {
+  transform: rotate(36deg) translate(-34vw, 34vw);
+}
+.sock-carousel .sock_pink:nth-child(3) {
+  transform: rotate(72deg) translate(-34vw, 34vw);
+}
+.sock-carousel .sock_pink:nth-child(4) {
+  transform: rotate(108deg) translate(-34vw, 34vw);
+}
+.sock-carousel .sock_pink:nth-child(5) {
+  transform: rotate(144deg) translate(-34vw, 34vw);
+}
+.sock-carousel .sock_pink:nth-child(6) {
+  transform: rotate(180deg) translate(-34vw, 34vw);
+}
+.sock-carousel .sock_pink:nth-child(7) {
+  transform: rotate(216deg) translate(-34vw, 34vw);
+}
+.sock-carousel .sock_pink:nth-child(8) {
+  transform: rotate(252deg) translate(-34vw, 34vw);
+}
+.sock-carousel .sock_pink:nth-child(9) {
+  transform: rotate(288deg) translate(-34vw, 34vw);
+}
+.sock-carousel .sock_pink:nth-child(10) {
+  transform: rotate(324deg) translate(-34vw, 34vw);
+}
+
+/* РОЗОВАЯ ПОЛОСА НАВИГАЦИИ */
+/* Полоса */
+#move-row {
+  border: 0.3125vw solid var(--black);
+  height: 10vw;
+  background-color: var(--pink);
+
+  display: flex;
+  align-items: center;
+
+  overflow: hidden;
+  min-width: 0;
+
+  --marquee-dur: 3s;
+}
+/* Контейнер ленты */
+#move-row .marquee {
+  display: flex;
+  width: 100%;
+}
+
+/* Две одинаковые дорожки, которые едут */
+#move-row .marquee__track {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+
+  gap: 2vw;
+  padding-inline: 2vw;
+
+  white-space: nowrap;
+  will-change: transform;
+
+  animation: marquee var(--marquee-dur) linear infinite;
+}
+#move-row:hover {
+  --marquee-dur: 14s;
+}
+#move-row:hover .marquee__track {
+  animation-play-state: running;
+}
+/* Иконки внутри ленты */
+#move-row .icon img {
+  height: 5vw;
+  width: auto;
+  display: block;
+}
+#move-row .tag {
+  display: flex;
+  align-items: center;
+}
+#move-row .tag p {
+  font-family: "Mabry Pro", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+
+  -webkit-text-fill-color: #fff;
+  color: #fff;
+  -webkit-text-stroke: 6px #000;
+  paint-order: stroke fill;
+  filter: drop-shadow(-2px 2px 0 #000) drop-shadow(-4px 4px 0 #000);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #move-row .marquee__track {
+    animation: none;
+  }
+}
+
+#third-section {
+  border: 0.3125vw solid var(--black);
+  height: 10vw;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto;
+}
+.cloth {
+  grid-column: 1 / 7;
+  width: 50vw;
+  height: 50vw;
+  border: 0.3125vw solid var(--black);
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.washer-block {
+  grid-column: 7 / 13;
+  width: 50vw;
+  height: 50vw;
+  border: 0.3125vw solid var(--black);
+  background: var(--yellow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Корпус стиралки */
+.washer {
+  width: 37vw;
+  height: 37vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Декоративные панели */
+.washer-panel {
+  height: 2.8vw;
+  border-radius: 1.2vw;
+  background: var(--yellow);
+  box-shadow: 0 0.15vw 0.25vw rgba(255, 255, 255, 0.7) inset,
+    0 0.25vw 0.35vw rgba(0, 0, 0, 0.05) inset;
+}
+/* Зона дверцы */
+.washer-door {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  perspective: 90vw;
+}
+
+/* Отверстие барабана за дверцей */
+.drum-hole {
+  position: absolute;
+  width: 93%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: var(--black);
+  z-index: 1;
+}
+
+/* Дверца с кольцом и стеклом (открывается) */
+.door-ring {
+  position: relative;
+  width: 100%;
+  border: 4vw solid var(--white);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.23, 0.77, 0.33, 1.02);
+  z-index: 2;
+  animation: door-shake 0.7s ease-in-out infinite;
+}
+
+/* Стекло дверцы */
+.door-glass {
+  border-radius: 50%;
+  outline: 2.3vw solid #181818;
+  width: 84%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  opacity: 40%;
+  background-color: var(--white);
+}
+
+/* Блик на стекле */
+.door-glass::before {
+  content: "";
+  position: absolute;
+  top: 6%;
+  left: 10%;
+  width: 55%;
+  height: 28%;
+  border-radius: 50%;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Носки */
+.sock {
+  position: absolute;
+  top: 36%;
+  left: 51%;
+  width: 9vw;
+  height: 10vw;
+  transform-origin: center;
+  /* Настройка отображения svg */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* Убираем «старую» ножку */
+.sock::before {
+  content: none;
+}
+
+.sock-1 {
+  background-image: url(/images/sock_pink.svg);
+  animation: sock-jump-1 1.1s infinite;
+}
+
+.sock-2 {
+  background-image: url(/images/sock_yellow.svg);
+  animation: sock-jump-2 1.25s infinite;
+}
+
+.sock-3 {
+  background-image: url(/images/sock_pink.svg);
+  animation: sock-jump-3 1.4s infinite;
+}
+.sock-4 {
+  background-image: url(/images/sock_green.svg);
+  animation: sock-jump-4 2s infinite;
+}
+
+/* Тряска окна (дверцы) */
+.washer-door:hover .sock-1 {
+  animation-name: sock-out-1;
+  animation-duration: 0.9s;
+  animation-timing-function: ease-out;
+  animation-delay: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.washer-door:hover .sock-2 {
+  animation-name: sock-out-2;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.washer-door:hover .sock-3 {
+  animation-name: sock-out-3;
+  animation-duration: 1.1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.washer-door:hover .sock-4 {
+  animation-name: sock-out-4;
+  animation-duration: 1.1s;
+  animation-timing-function: ease-out;
+  animation-delay: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+/* На ховере – дверь открывается, стиралка перестает трястись */
+.washer-door:hover .door-ring {
+  animation: none;
+  transform: rotateY(-60deg);
+}
+.sock_rain {
+  grid-column: 1 / span 5;
+  background-color: var(--green);
+}
+.move-row-2 {
+  grid-column: 6 / span 12;
+  height: 10vw;
+  display: grid;
+}
+#laundry {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto auto;
+}
+.laundry-buttons {
+  height: 100%;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 0;
+  grid-column: 1 / 3;
+}
+
+#laundry p {
+  font-family: "Mabry Pro", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 2.5vw;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  -webkit-text-fill-color: #fff;
+  color: #fff;
+  -webkit-text-stroke: 6px #000;
+  paint-order: stroke fill;
+  filter: drop-shadow(-2px 2px 0 #000) drop-shadow(-4px 4px 0 #000);
+}
+.button-yellow {
+  border: 0.3125vw solid var(--black);
+  grid-row: 1 / 2;
+  background-color: var(--yellow);
+  justify-items: center;
+  align-items: center;
+  display: grid;
+  aspect-ratio: 1 / 1;
+  height: 100%;
+}
+.button-green {
+  border: 0.3125vw solid var(--black);
+  grid-row: 3 / 4;
+  background-color: var(--green);
+  justify-items: center;
+  align-items: center;
+  display: grid;
+  aspect-ratio: 1 / 1;
+  height: 100%;
+}
+.button-pink {
+  border: 0.3125vw solid var(--black);
+  grid-row: 2 / 3;
+  background-color: var(--pink);
+  justify-items: center;
+  align-items: center;
+  display: grid;
+  aspect-ratio: 1 / 1;
+  height: 100%;
+}
+.shirt-block {
+  height: 100%;
+  grid-column: 3 / 9;
+  transition: 0.3s;
+  background-color: var(--white);
+  height: 100%;
+  border: 0.3125vw solid var(--black);
+}
+#laundry:has(.button-yellow:hover) .obj {
+  background-image: url("/images/sock_yellow.svg");
+}
+#laundry:has(.button-green:hover) .obj {
+  background-image: url("/images/sock_green.svg");
+}
+#laundry:has(.button-pink:hover) .obj {
+  background-image: url("/images/sock_pink.svg");
+}
+.fall {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--white);
+}
+.lane {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.sheet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  animation: fall var(--t, 10s) linear infinite;
+}
+.sheet:nth-child(2) {
+  top: -100%;
+}
+@keyframes fall {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100%);
+  }
+}
+/* Скорости слоёв */
+.lane--slow {
+  --t: 7s;
+  filter: blur(0.5rem);
+  scale: 1;
+}
+.lane--mid {
+  --t: 4s;
+  filter: blur(0.1rem);
+  scale: 1.5;
+}
+.lane--fast {
+  --t: 2s;
+  scale: 2.5;
+}
+.obj {
+  position: absolute;
+  left: var(--x, 50%);
+  top: 0;
+  width: 8vw;
+  height: 8vw;
+  background-image: url("/images/sock_white.svg");
+  background-repeat: no-repeat;
+  animation: wobble 1.8s ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+  background-position: center;
+  background-size: contain;
+  display: block;
+}
+@keyframes wobble {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0.25vw 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sheet {
+    animation: none;
+  }
+  .obj {
+    animation: none;
+  }
+}
+
+/* ГАРДЕРОБ */
+
+.wardrobe-block {
+  grid-column: 9 / 13;
+  padding: 2.22vw 2.22vw 3.33vw;
+  background: #10101b;
+  border: 0.3125vw solid var(--black);
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* САМ ЭЛЕМЕНТ: убираем любые квадратные "плашки" и box-shadow */
+.wardrobe-item {
+  --item-size: 4.6vw;
+
+  width: var(--item-size);
+  aspect-ratio: 1 / 1;
+  height: auto;
+
+  position: relative;
+  transform-style: preserve-3d;
+  transform-origin: top center;
+  cursor: pointer;
+  /* ключевое: никакого фона/тени у контейнера */
+  overflow: visible;
+
+  transition: transform 0.35s ease, z-index 0.2s ease;
+}
+/* ВНУТРЕННИЙ БЛОК СО ЗВЕЗДОЙ */
+.wardrobe-square {
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  background-color: transparent !important;
+  box-shadow: none !important;
+
+  filter: drop-shadow(0 0.45vw 0.85vw rgba(0, 0, 0, 0.18));
+
+  scale: 1;
+  transition: scale 800ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 800ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.wardrobe-item:hover {
+  z-index: 10;
+  scale: 2;
+}
+
+.wardrobe-item:focus,
+.wardrobe-item:active {
+  outline: none;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(1) .wardrobe-square {
+  background-image: url(/images/sparkle_green.svg);
+  transform-origin: 50% 50%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_1 6.8s ease-in-out infinite,
+    star_twinkle_b 1.64s ease-in-out infinite,
+    wardrobe_glow_a 2.95s ease-in-out infinite;
+  animation-delay: -0.43s, -0.19s, -0.31s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(2) .wardrobe-square {
+  background-image: url(/images/sparkle_green.svg);
+  transform-origin: 48% 54%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_2 7.4s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+    star_twinkle_d 1.43s ease-in-out infinite,
+    wardrobe_glow_a 3.5s ease-in-out infinite;
+  animation-delay: -0.86s, -0.38s, -0.62s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(3) .wardrobe-square {
+  background-image: url(/images/sparkle_green.svg);
+  transform-origin: 53% 47%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_3 8.1s cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+    star_twinkle_a 1.22s ease-in-out infinite,
+    wardrobe_glow_a 2.84s ease-in-out infinite;
+  animation-delay: -1.29s, -0.57s, -0.93s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(4) .wardrobe-square {
+  background-image: url(/images/sparkle_green.svg);
+  transform-origin: 46% 50%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_4 6.2s ease-in-out infinite,
+    star_twinkle_c 1.71s ease-in-out infinite,
+    wardrobe_glow_a 3.39s ease-in-out infinite;
+  animation-delay: -1.72s, -0.76s, -1.24s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(5) .wardrobe-square {
+  background-image: url(/images/sparkle_green.svg);
+  transform-origin: 50% 46%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_5 9s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+    star_twinkle_e 1.5s ease-in-out infinite,
+    wardrobe_glow_a 2.73s ease-in-out infinite;
+  animation-delay: -2.15s, -0.95s, -1.55s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(6) .wardrobe-square {
+  background-image: url(/images/sparkle_yellow.svg);
+  transform-origin: 55% 52%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_6 7.1s cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+    star_twinkle_b 1.29s ease-in-out infinite,
+    wardrobe_glow_a 3.28s ease-in-out infinite;
+  animation-delay: -2.58s, -1.14s, -1.86s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(7) .wardrobe-square {
+  background-image: url(/images/sparkle_yellow.svg);
+  transform-origin: 47% 46%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_7 6.5s ease-in-out infinite,
+    star_twinkle_d 1.78s ease-in-out infinite,
+    wardrobe_glow_a 2.62s ease-in-out infinite;
+  animation-delay: -3.01s, -1.33s, -2.17s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(8) .wardrobe-square {
+  background-image: url(/images/sparkle_yellow.svg);
+  transform-origin: 52% 55%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_8 8.6s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+    star_twinkle_a 1.57s ease-in-out infinite,
+    wardrobe_glow_a 3.17s ease-in-out infinite;
+  animation-delay: -3.44s, -1.52s, -2.48s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(9) .wardrobe-square {
+  background-image: url(/images/sparkle_pink.svg);
+  transform-origin: 44% 52%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_9 7.8s cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+    star_twinkle_c 1.36s ease-in-out infinite,
+    wardrobe_glow_a 2.51s ease-in-out infinite;
+  animation-delay: -3.87s, -0.35s, -0.28s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(10) .wardrobe-square {
+  background-image: url(/images/sparkle_pink.svg);
+  transform-origin: 56% 48%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_10 6.9s ease-in-out infinite,
+    star_twinkle_e 1.15s ease-in-out infinite,
+    wardrobe_glow_a 3.06s ease-in-out infinite;
+  animation-delay: -4.3s, -0.75s, -0.04s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(11) .wardrobe-square {
+  background-image: url(/images/sparkle_red.svg);
+  transform-origin: 50% 50%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_1 8.9s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+    star_twinkle_b 1.64s ease-in-out infinite,
+    wardrobe_glow_a 2.4s ease-in-out infinite;
+  animation-delay: -4.73s, -0.45s, -1.01s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(12) .wardrobe-square {
+  background-image: url(/images/sparkle_green.svg);
+  transform-origin: 48% 54%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_2 6.3s cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+    star_twinkle_d 1.43s ease-in-out infinite,
+    wardrobe_glow_a 2.95s ease-in-out infinite;
+  animation-delay: -5.16s, -0.85s, -0.77s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(13) .wardrobe-square {
+  background-image: url(/images/sparkle_pink.svg);
+  transform-origin: 53% 47%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_3 7.6s ease-in-out infinite,
+    star_twinkle_a 1.22s ease-in-out infinite,
+    wardrobe_glow_a 3.5s ease-in-out infinite;
+  animation-delay: -5.59s, -0.03s, -0.53s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(14) .wardrobe-square {
+  background-image: url(/images/sparkle_red.svg);
+  transform-origin: 46% 50%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_4 8.2s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+    star_twinkle_c 1.71s ease-in-out infinite,
+    wardrobe_glow_a 2.84s ease-in-out infinite;
+  animation-delay: -6.02s, -0.95s, -1.5s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(15) .wardrobe-square {
+  background-image: url(/images/sparkle_yellow.svg);
+  transform-origin: 50% 46%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_5 6.7s cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+    star_twinkle_e 1.5s ease-in-out infinite,
+    wardrobe_glow_a 3.39s ease-in-out infinite;
+  animation-delay: -6.45s, -1.35s, -1.26s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(16) .wardrobe-square {
+  background-image: url(/images/sparkle_green.svg);
+  transform-origin: 55% 52%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_6 9.1s ease-in-out infinite,
+    star_twinkle_b 1.29s ease-in-out infinite,
+    wardrobe_glow_a 2.73s ease-in-out infinite;
+  animation-delay: -6.88s, -0.46s, -2.23s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(17) .wardrobe-square {
+  background-image: url(/images/sparkle_pink.svg);
+  transform-origin: 47% 46%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_7 7.2s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+    star_twinkle_d 1.78s ease-in-out infinite,
+    wardrobe_glow_a 3.28s ease-in-out infinite;
+  animation-delay: -0.11s, -1.45s, -1.99s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(18) .wardrobe-square {
+  background-image: url(/images/sparkle_red.svg);
+  transform-origin: 52% 55%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_8 6.1s cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+    star_twinkle_a 1.57s ease-in-out infinite,
+    wardrobe_glow_a 2.62s ease-in-out infinite;
+  animation-delay: -1.64s, -0.28s, -0.34s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(19) .wardrobe-square {
+  background-image: url(/images/sparkle_yellow.svg);
+  transform-origin: 44% 52%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_9 8.4s ease-in-out infinite,
+    star_twinkle_c 1.36s ease-in-out infinite,
+    wardrobe_glow_a 3.17s ease-in-out infinite;
+  animation-delay: -8.17s, -0.89s, -2.72s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(20) .wardrobe-square {
+  background-image: url(/images/sparkle_green.svg);
+  transform-origin: 56% 48%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_10 7s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+    star_twinkle_e 1.15s ease-in-out infinite,
+    wardrobe_glow_a 2.51s ease-in-out infinite;
+  animation-delay: -1.6s, -0.35s, -1.18s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(21) .wardrobe-square {
+  background-image: url(/images/sparkle_pink.svg);
+  transform-origin: 50% 50%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_1 6.6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+    star_twinkle_b 1.64s ease-in-out infinite,
+    wardrobe_glow_a 3.06s ease-in-out infinite;
+  animation-delay: -2.43s, -0.71s, -0.39s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(22) .wardrobe-square {
+  background-image: url(/images/sparkle_yellow.svg);
+  transform-origin: 48% 54%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_2 8.8s ease-in-out infinite,
+    star_twinkle_d 1.43s ease-in-out infinite,
+    wardrobe_glow_a 2.4s ease-in-out infinite;
+  animation-delay: -0.66s, -1.32s, -2.02s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(23) .wardrobe-square {
+  background-image: url(/images/sparkle_red.svg);
+  transform-origin: 53% 47%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_3 7.7s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+    star_twinkle_a 1.22s ease-in-out infinite,
+    wardrobe_glow_a 2.95s ease-in-out infinite;
+  animation-delay: -2.19s, -0.71s, -1.23s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(24) .wardrobe-square {
+  background-image: url(/images/sparkle_green.svg);
+  transform-origin: 46% 50%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_4 6.4s cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+    star_twinkle_c 1.71s ease-in-out infinite,
+    wardrobe_glow_a 3.5s ease-in-out infinite;
+  animation-delay: -3.92s, -1.14s, -0.44s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(25) .wardrobe-square {
+  background-image: url(/images/sparkle_pink.svg);
+  transform-origin: 50% 46%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_5 9.2s ease-in-out infinite,
+    star_twinkle_e 1.5s ease-in-out infinite,
+    wardrobe_glow_a 2.84s ease-in-out infinite;
+  animation-delay: -1.55s, -0.25s, -2.07s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(26) .wardrobe-square {
+  background-image: url(/images/sparkle_yellow.svg);
+  transform-origin: 55% 52%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_6 7.3s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+    star_twinkle_b 1.29s ease-in-out infinite,
+    wardrobe_glow_a 3.39s ease-in-out infinite;
+  animation-delay: -3.88s, -1.07s, -1.28s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(27) .wardrobe-square {
+  background-image: url(/images/sparkle_red.svg);
+  transform-origin: 47% 46%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_7 6s cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+    star_twinkle_d 1.78s ease-in-out infinite,
+    wardrobe_glow_a 2.73s ease-in-out infinite;
+  animation-delay: -5.61s, -1.57s, -0.18s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(28) .wardrobe-square {
+  background-image: url(/images/sparkle_green.svg);
+  transform-origin: 52% 55%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_8 8.5s ease-in-out infinite,
+    star_twinkle_a 1.57s ease-in-out infinite,
+    wardrobe_glow_a 3.28s ease-in-out infinite;
+  animation-delay: -3.54s, -0.61s, -2.12s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(29) .wardrobe-square {
+  background-image: url(/images/sparkle_pink.svg);
+  transform-origin: 44% 52%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_9 7.9s cubic-bezier(0.4, 0, 0.2, 1) infinite,
+    star_twinkle_c 1.36s ease-in-out infinite,
+    wardrobe_glow_a 2.62s ease-in-out infinite;
+  animation-delay: -4.57s, -0.07s, -1.13s;
+}
+
+.wardrobe-block .wardrobe-item:nth-child(30) .wardrobe-square {
+  background-image: url(/images/sparkle_yellow.svg);
+  transform-origin: 56% 48%;
+  will-change: transform, opacity, filter;
+  animation: wardrobe_live_10 6.55s cubic-bezier(0.2, 0.8, 0.2, 1) infinite,
+    star_twinkle_e 1.15s ease-in-out infinite,
+    wardrobe_glow_a 3.17s ease-in-out infinite;
+  animation-delay: -6.35s, -1.1s, -2.96s;
+}
+
+.wardrobe-item:hover,
+.wardrobe-item:focus-within {
+  transform: translateY(-2.08vw) translateZ(9.72vw) rotateX(0deg) rotateY(0deg);
+  z-index: 10;
+}
+.wardrobe-item:hover .wardrobe-square,
+.wardrobe-item:focus-within .wardrobe-square {
+  scale: 1.6;
+  filter: drop-shadow(0 0.9vw 1.6vw rgba(0, 0, 0, 0.22))
+    drop-shadow(0 0 1.8vw rgba(255, 255, 255, 0.35)) brightness(1.08);
+}
+
+#showcase {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.pic {
+  grid-column: span 3;
+  height: 25vw;
+  grid-row: 1 / 2;
+  aspect-ratio: 1 / 1;
+  border: 0.3125vw solid var(--black);
+}
+.pic_2 {
+  grid-column: span 3;
+  grid-row: 2 / 3;
+  aspect-ratio: 1 / 1;
+  height: 25vw;
+  border: 0.3125vw solid var(--black);
+}
+.pic:nth-child(1) {
+  background-color: var(--green);
+}
+.pic:nth-child(2) {
+  background-color: var(--pink);
+}
+.pic:nth-child(3) {
+  background-color: var(--yellow);
+}
+.sock-trail-scene {
+  width: 100%;
+  height: 100%;
+  border: 0.3125vw solid var(--black);
+  position: relative;
+  overflow: hidden;
+  background: #10101b;
+}
+.sock-fly {
+  position: absolute;
+  right: 10%;
+  top: 45%;
+  width: 12vw;
+  aspect-ratio: 1 / 1;
+  background-image: url("/images/sock_white.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  transform-origin: 40% 60%;
+  animation: trail_sock_float 2.9s cubic-bezier(0.55, 0, 0.25, 1) infinite,
+    trail_sock_glow 2.6s ease-in-out infinite;
+}
+
+/* Контейнер следа */
+.trail {
+  position: absolute;
+  left: 8%;
+  top: 50%;
+  width: 78%;
+  height: 44%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  animation: trail_drift 2.9s ease-in-out infinite;
+}
+
+/* Эмиттер звезды (движение) */
+.trail-star {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  width: clamp(11px, 1.15vw, 20px);
+  aspect-ratio: 1;
+  opacity: 1;
+  pointer-events: none;
+  animation: trail_star_emit 1.75s linear infinite;
+  will-change: transform, opacity;
+}
+
+/* Визуал звезды — ваша .sparkle_yellow (маска из sparkle_yellow.svg) */
+.sparkle_yellow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: currentColor;
+
+  -webkit-mask: url("/images/sparkle_yellow.svg") center/contain no-repeat;
+  mask: url("/images/sparkle_yellow.svg") center/contain no-repeat;
+
+  transform-origin: 50% 55%;
+  filter: drop-shadow(0 0 1.2vw rgba(255, 255, 255, 0.22))
+    drop-shadow(0 0.45vw 0.85vw rgba(0, 0, 0, 0.18));
+  animation: trail_star_wiggle 1.15s ease-in-out infinite,
+    trail_star_breath 1.9s ease-in-out infinite,
+    trail_star_twinkle 0.95s ease-in-out infinite;
+  animation-delay: inherit; /* синхронизация с вылетом */
+}
+
+/* 30 звёзд: разные dy + задержки + палитра (родительские цвета) */
+.trail-star:nth-child(1) {
+  --dy: -2.6vw;
+  color: var(--red);
+  animation-delay: -0.1s;
+}
+.trail-star:nth-child(2) {
+  --dy: -2vw;
+  color: var(--yellow);
+  animation-delay: -0.18s;
+}
+.trail-star:nth-child(3) {
+  --dy: -1.4vw;
+  color: var(--green);
+  animation-delay: -0.26s;
+}
+.trail-star:nth-child(4) {
+  --dy: -0.8vw;
+  color: var(--pink);
+  animation-delay: -0.34s;
+}
+.trail-star:nth-child(5) {
+  --dy: -0.2vw;
+  color: var(--yellow);
+  animation-delay: -0.42s;
+}
+.trail-star:nth-child(6) {
+  --dy: 0.4vw;
+  color: var(--green);
+  animation-delay: -0.5s;
+}
+.trail-star:nth-child(7) {
+  --dy: 1vw;
+  color: var(--pink);
+  animation-delay: -0.58s;
+}
+.trail-star:nth-child(8) {
+  --dy: 1.6vw;
+  color: var(--red);
+  animation-delay: -0.66s;
+}
+.trail-star:nth-child(9) {
+  --dy: 2.2vw;
+  color: var(--yellow);
+  animation-delay: -0.74s;
+}
+.trail-star:nth-child(10) {
+  --dy: 2.8vw;
+  color: var(--green);
+  animation-delay: -0.82s;
+}
+
+.trail-star:nth-child(11) {
+  --dy: -2.3vw;
+  color: var(--pink);
+  animation-delay: -0.9s;
+}
+.trail-star:nth-child(12) {
+  --dy: -1.7vw;
+  color: var(--yellow);
+  animation-delay: -0.98s;
+}
+.trail-star:nth-child(13) {
+  --dy: -1.1vw;
+  color: var(--green);
+  animation-delay: -1.06s;
+}
+.trail-star:nth-child(14) {
+  --dy: -0.5vw;
+  color: var(--red);
+  animation-delay: -1.14s;
+}
+.trail-star:nth-child(15) {
+  --dy: 0.1vw;
+  color: var(--pink);
+  animation-delay: -1.22s;
+}
+.trail-star:nth-child(16) {
+  --dy: 0.7vw;
+  color: var(--yellow);
+  animation-delay: -1.3s;
+}
+.trail-star:nth-child(17) {
+  --dy: 1.3vw;
+  color: var(--green);
+  animation-delay: -1.38s;
+}
+.trail-star:nth-child(18) {
+  --dy: 1.9vw;
+  color: var(--pink);
+  animation-delay: -1.46s;
+}
+.trail-star:nth-child(19) {
+  --dy: 2.5vw;
+  color: var(--red);
+  animation-delay: -1.54s;
+}
+.trail-star:nth-child(20) {
+  --dy: 3.1vw;
+  color: var(--yellow);
+  animation-delay: -1.62s;
+}
+
+.trail-star:nth-child(21) {
+  --dy: -2.8vw;
+  color: var(--green);
+  animation-delay: -1.7s;
+}
+.trail-star:nth-child(22) {
+  --dy: -2.2vw;
+  color: var(--red);
+  animation-delay: -1.78s;
+}
+.trail-star:nth-child(23) {
+  --dy: -1.6vw;
+  color: var(--yellow);
+  animation-delay: -1.86s;
+}
+.trail-star:nth-child(24) {
+  --dy: -1vw;
+  color: var(--pink);
+  animation-delay: -1.94s;
+}
+.trail-star:nth-child(25) {
+  --dy: -0.4vw;
+  color: var(--green);
+  animation-delay: -2.02s;
+}
+.trail-star:nth-child(26) {
+  --dy: 0.2vw;
+  color: var(--yellow);
+  animation-delay: -2.1s;
+}
+.trail-star:nth-child(27) {
+  --dy: 0.8vw;
+  color: var(--red);
+  animation-delay: -2.18s;
+}
+.trail-star:nth-child(28) {
+  --dy: 1.4vw;
+  color: var(--pink);
+  animation-delay: -2.26s;
+}
+.trail-star:nth-child(29) {
+  --dy: 2vw;
+  color: var(--green);
+  animation-delay: -2.34s;
+}
+.trail-star:nth-child(30) {
+  --dy: 2.6vw;
+  color: var(--yellow);
+  animation-delay: -2.42s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sock-fly,
+  .trail,
+  .trail-star,
+  .sparkle_yellow::before {
+    animation: none !important;
+  }
+  .trail-star {
+    opacity: 1;
+  }
+}
