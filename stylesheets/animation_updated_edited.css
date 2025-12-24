@@ -1042,3 +1042,129 @@
     opacity: 1;
   }
 }
+/* =========================
+   SHOWCASE: pixel -> room hover
+   ========================= */
+
+/* для анимации размера “пикселя” */
+@property --px {
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 28px;
+}
+
+/* пиксельный слой (появляется на hover и “рассыпается”) */
+.pic_2::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+
+  --px: 28px;
+
+  /* шашечный “пиксельный” узор */
+  background: conic-gradient(
+      from 90deg,
+      rgba(0, 0, 0, 0.18) 0 25%,
+      transparent 0 50%,
+      rgba(0, 0, 0, 0.12) 0 75%,
+      transparent 0
+    )
+    0 0 / var(--px) var(--px);
+
+  mix-blend-mode: multiply;
+  opacity: 0;
+  transform: translateZ(0);
+  will-change: opacity, background-size;
+}
+
+.pic_2:hover::after,
+.pic_2:focus-within::after {
+  animation: showcase_pixel_reveal 720ms steps(10, end) both;
+}
+
+/* “дыхание” линий и предмета, чтобы было живее */
+.pic_2:hover .room-line,
+.pic_2:focus-within .room-line {
+  animation: showcase_line_shimmer 1.55s ease-in-out infinite;
+}
+
+.pic_2:hover .room-item,
+.pic_2:focus-within .room-item {
+  animation: showcase_item_sway 1.9s cubic-bezier(0.55, 0, 0.25, 1) infinite;
+}
+
+.pic_2:hover .room-item::after,
+.pic_2:focus-within .room-item::after {
+  animation: showcase_item_shadow 1.9s cubic-bezier(0.55, 0, 0.25, 1) infinite;
+}
+
+@keyframes showcase_pixel_reveal {
+  0% {
+    opacity: 1;
+    --px: 30px;
+    filter: blur(0.2px);
+  }
+  45% {
+    opacity: 1;
+    --px: 16px;
+    filter: blur(0px);
+  }
+  100% {
+    opacity: 0;
+    --px: 6px;
+    filter: blur(0px);
+  }
+}
+
+@keyframes showcase_item_sway {
+  0%,
+  100% {
+    transform: translate(-50%, 0) rotate(-5deg) translateY(0);
+  }
+  45% {
+    transform: translate(-50%, 0) rotate(6deg) translateY(-0.55vw);
+  }
+  70% {
+    transform: translate(-50%, 0) rotate(2deg) translateY(-0.25vw);
+  }
+}
+
+@keyframes showcase_item_shadow {
+  0%,
+  100% {
+    transform: translate(-50%, -18%) scale(1);
+    opacity: 0.58;
+  }
+  45% {
+    transform: translate(-50%, -18%) scale(0.86);
+    opacity: 0.42;
+  }
+  70% {
+    transform: translate(-50%, -18%) scale(0.93);
+    opacity: 0.5;
+  }
+}
+
+@keyframes showcase_line_shimmer {
+  0%,
+  100% {
+    opacity: 0.52;
+    filter: drop-shadow(0 0 0.35vw rgba(255, 255, 255, 0.08));
+  }
+  50% {
+    opacity: 0.68;
+    filter: drop-shadow(0 0 0.65vw rgba(255, 255, 255, 0.16));
+  }
+}
+
+/* reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .pic_2::after,
+  .pic_2:hover .room-line,
+  .pic_2:hover .room-item,
+  .pic_2:hover .room-item::after {
+    animation: none !important;
+  }
+}
