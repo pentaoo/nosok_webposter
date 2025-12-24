@@ -1,15 +1,15 @@
 @keyframes sparkle_pink {
   0% {
-    background-image: url(/images/sparkle_pink.svg);
+    background-image: url(images/sparkle_pink.svg);
   }
   33% {
-    background-image: url(/images/sparkle_yellow.svg);
+    background-image: url(images/sparkle_yellow.svg);
   }
   66% {
-    background-image: url(/images/sparkle_green.svg);
+    background-image: url(images/sparkle_green.svg);
   }
   100% {
-    background-image: url(/images/sparkle_red.svg);
+    background-image: url(images/sparkle_red.svg);
   }
 }
 /* Вылет носков из открывшейся дверцы */
@@ -1006,19 +1006,19 @@
 /* Смена “типа носка” без JS (как у вас sparkle_pink) */
 @keyframes sock_cycle {
   0% {
-    background-image: url("/images/sock_pink.svg");
+    background-image: url("images/sock_pink.svg");
   }
   25% {
-    background-image: url("/images/sock_yellow.svg");
+    background-image: url("images/sock_yellow.svg");
   }
   50% {
-    background-image: url("/images/sock_green.svg");
+    background-image: url("images/sock_green.svg");
   }
   75% {
-    background-image: url("/images/sock_white.svg");
+    background-image: url("images/sock_white.svg");
   }
   100% {
-    background-image: url("/images/sock_pink.svg");
+    background-image: url("images/sock_pink.svg");
   }
 }
 
