@@ -457,19 +457,6 @@ body {
   display: flex;
   align-items: center;
 }
-#move-row-log .tag p {
-  font-family: "Mabry Pro", system-ui, sans-serif;
-  font-weight: 500;
-  font-size: 48px;
-  line-height: 1;
-  letter-spacing: -0.03em;
-
-  -webkit-text-fill-color: #fff;
-  color: #fff;
-  -webkit-text-stroke: 6px #000;
-  paint-order: stroke fill;
-  filter: drop-shadow(-2px 2px 0 #000) drop-shadow(-4px 4px 0 #000);
-}
 
 @keyframes marquee {
   from {
