@@ -360,39 +360,30 @@ body {
 .sock-carousel .sock_pink:nth-child(10) {
   transform: rotate(324deg) translate(-34vw, 34vw);
 }
-/* РОЗОВАЯ ПОЛОСА НАВИГАЦИИ */
-/* Полоса */
+
 #move-row {
   border: 0.3125vw solid var(--black);
   height: 10vw;
   background-color: var(--pink);
-
   display: flex;
   align-items: center;
-
   overflow: hidden;
   min-width: 0;
-
   --marquee-dur: 3s;
 }
-/* Контейнер ленты */
 #move-row .marquee {
   display: flex;
   width: 100%;
 }
 
-/* Две одинаковые дорожки, которые едут */
 #move-row .marquee__track {
   display: flex;
   align-items: center;
   flex: 0 0 auto;
-
   gap: 2vw;
   padding-inline: 2vw;
-
   white-space: nowrap;
   will-change: transform;
-
   animation: marquee var(--marquee-dur) linear infinite;
 }
 #move-row:hover {
@@ -412,6 +403,61 @@ body {
   align-items: center;
 }
 #move-row .tag p {
+  font-family: "Mabry Pro", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+
+  -webkit-text-fill-color: #fff;
+  color: #fff;
+  -webkit-text-stroke: 6px #000;
+  paint-order: stroke fill;
+  filter: drop-shadow(-2px 2px 0 #000) drop-shadow(-4px 4px 0 #000);
+}
+
+#move-row {
+  border: 0.3125vw solid var(--black);
+  height: 10vw;
+  background-color: var(--pink);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  min-width: 0;
+  --marquee-dur: 3s;
+}
+#move-row-logo .marquee {
+  display: flex;
+  width: 100%;
+}
+
+#move-row-logo .marquee__track_logo {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  gap: 2vw;
+  padding-inline: 2vw;
+  white-space: nowrap;
+  will-change: transform;
+  animation: marquee var(--marquee-dur) linear infinite;
+}
+#move-row-logo:hover {
+  --marquee-dur: 14s;
+}
+#move-row-logo:hover .marquee__track_logo {
+  animation-play-state: running;
+}
+/* Иконки внутри ленты */
+#move-row-logo .icon img {
+  height: 5vw;
+  width: auto;
+  display: block;
+}
+#move-row-logo .tag {
+  display: flex;
+  align-items: center;
+}
+#move-row-log .tag p {
   font-family: "Mabry Pro", system-ui, sans-serif;
   font-weight: 500;
   font-size: 48px;
@@ -457,6 +503,84 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  position: relative;
+}
+.cloth .dvd-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* X moves on the parent, Y moves on the child => diagonal bounce like the DVD logo */
+.cloth .dvd-sock {
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  /* defaults (overridden per sock below) */
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  left: 0;
+  top: 0;
+
+  animation:
+    dvd-left var(--dur-x) linear infinite alternate,
+    dvd-top  var(--dur-y) linear infinite alternate;
+  animation-delay: var(--delay-x), var(--delay-y);
+}
+
+
+
+.cloth .dvd-sock__y {
+  position: relative;
+  display: block;
+  width: var(--size);
+  height: var(--size);
+
+  animation: dvd-y var(--dur-y) linear infinite alternate;
+  animation-delay: var(--delay-y);
+  will-change: transform;
+}
+
+.cloth .dvd-sock::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: var(--img) center/contain no-repeat;
+  transform: rotate(var(--rot));
+  animation: dvd-wobble var(--dur-w) ease-in-out infinite;
+}
+
+
+/* Individual sock “randomness” (durations are intentionally non-matching) */
+.cloth .dvd-sock--1  { --img: url("../images/sock_pink.svg");   --size: clamp(20px, 4.6vw, 58px); --dur-x: 11.3s; --dur-y: 7.7s; --delay-x: -2.1s; --delay-y: -6.4s; --rot: 12deg;  --dur-w: 2.2s; }
+.cloth .dvd-sock--2  { --img: url("../images/sock_yellow.svg"); --size: clamp(18px, 4.2vw, 54px); --dur-x: 9.1s;  --dur-y: 10.6s;--delay-x: -6.8s; --delay-y: -1.9s; --rot: -8deg;  --dur-w: 1.6s; }
+.cloth .dvd-sock--3  { --img: url("../images/sock_green.svg");  --size: clamp(24px, 5.8vw, 70px); --dur-x: 12.7s; --dur-y: 8.4s; --delay-x: -4.2s; --delay-y: -3.3s; --rot: 18deg;  --dur-w: 2.4s; }
+.cloth .dvd-sock--4  { --img: url("../images/sock_pink.svg");   --size: clamp(16px, 3.8vw, 50px); --dur-x: 8.6s;  --dur-y: 6.9s; --delay-x: -1.4s; --delay-y: -5.2s; --rot: -14deg; --dur-w: 1.9s; }
+.cloth .dvd-sock--5  { --img: url("../images/sock_yellow.svg"); --size: clamp(22px, 5.0vw, 62px); --dur-x: 10.8s; --dur-y: 9.6s; --delay-x: -7.9s; --delay-y: -2.7s; --rot: 6deg;   --dur-w: 2.0s; }
+.cloth .dvd-sock--6  { --img: url("../images/sock_green.svg");  --size: clamp(19px, 4.4vw, 56px); --dur-x: 7.9s;  --dur-y: 11.8s;--delay-x: -3.6s; --delay-y: -8.1s; --rot: -4deg;  --dur-w: 1.5s; }
+.cloth .dvd-sock--7  { --img: url("../images/sock_pink.svg");   --size: clamp(26px, 6.2vw, 74px); --dur-x: 13.9s; --dur-y: 8.9s; --delay-x: -9.2s; --delay-y: -4.8s; --rot: 22deg;  --dur-w: 2.6s; }
+.cloth .dvd-sock--8  { --img: url("../images/sock_yellow.svg"); --size: clamp(17px, 4.0vw, 52px); --dur-x: 9.9s;  --dur-y: 7.2s; --delay-x: -5.1s; --delay-y: -0.8s; --rot: -10deg; --dur-w: 1.7s; }
+.cloth .dvd-sock--9  { --img: url("../images/sock_green.svg");  --size: clamp(21px, 4.9vw, 60px); --dur-x: 11.9s; --dur-y: 10.1s;--delay-x: -0.9s; --delay-y: -6.9s; --rot: 9deg;   --dur-w: 2.1s; }
+.cloth .dvd-sock--10 { --img: url("../images/sock_pink.svg");   --size: clamp(18px, 4.3vw, 54px); --dur-x: 8.2s;  --dur-y: 9.3s; --delay-x: -6.0s; --delay-y: -3.8s; --rot: -6deg;  --dur-w: 1.8s; }
+.cloth .dvd-sock--11 { --img: url("../images/sock_yellow.svg"); --size: clamp(24px, 5.6vw, 68px); --dur-x: 14.4s; --dur-y: 7.8s; --delay-x: -3.1s; --delay-y: -9.7s; --rot: 16deg;  --dur-w: 2.3s; }
+.cloth .dvd-sock--12 { --img: url("../images/sock_green.svg");  --size: clamp(15px, 3.6vw, 48px); --dur-x: 7.3s;  --dur-y: 8.7s; --delay-x: -2.6s; --delay-y: -1.6s; --rot: -18deg; --dur-w: 1.4s; }
+.cloth .dvd-sock--13 { --img: url("../images/sock_pink.svg");   --size: clamp(23px, 5.4vw, 66px); --dur-x: 12.1s; --dur-y: 6.8s; --delay-x: -10.7s;--delay-y: -4.1s; --rot: 4deg;   --dur-w: 2.0s; }
+.cloth .dvd-sock--14 { --img: url("../images/sock_yellow.svg"); --size: clamp(19px, 4.5vw, 56px); --dur-x: 9.4s;  --dur-y: 12.9s;--delay-x: -1.8s; --delay-y: -7.5s; --rot: -2deg;  --dur-w: 1.6s; }
+.cloth .dvd-sock--15 { --img: url("../images/sock_green.svg");  --size: clamp(27px, 6.4vw, 76px); --dur-x: 15.7s; --dur-y: 9.1s; --delay-x: -8.4s; --delay-y: -2.2s; --rot: 14deg;  --dur-w: 2.7s; }
+.cloth .dvd-sock--16 { --img: url("../images/sock_pink.svg");   --size: clamp(16px, 3.9vw, 50px); --dur-x: 8.9s;  --dur-y: 11.1s;--delay-x: -4.9s; --delay-y: -5.9s; --rot: -12deg; --dur-w: 1.7s; }
+.cloth .dvd-sock--17 { --img: url("../images/sock_yellow.svg"); --size: clamp(21px, 5.0vw, 62px); --dur-x: 10.2s; --dur-y: 7.5s; --delay-x: -0.3s; --delay-y: -8.6s; --rot: 20deg;  --dur-w: 2.2s; }
+.cloth .dvd-sock--18 { --img: url("../images/sock_green.svg");  --size: clamp(18px, 4.1vw, 52px); --dur-x: 7.7s;  --dur-y: 9.8s; --delay-x: -6.2s; --delay-y: -2.9s; --rot: -7deg;  --dur-w: 1.5s; }
+.cloth .dvd-sock--19 { --img: url("../images/sock_pink.svg");   --size: clamp(25px, 5.9vw, 72px); --dur-x: 13.1s; --dur-y: 12.3s;--delay-x: -11.4s;--delay-y: -6.0s; --rot: 10deg;  --dur-w: 2.6s; }
+.cloth .dvd-sock--20 { --img: url("../images/sock_yellow.svg"); --size: clamp(17px, 4.0vw, 52px); --dur-x: 9.8s;  --dur-y: 6.6s; --delay-x: -3.9s; --delay-y: -0.4s; --rot: -16deg; --dur-w: 1.8s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .cloth .dvd-sock,
+  .cloth .dvd-sock__y,
+  .cloth .dvd-sock__y::before {
+    animation: none !important;
+  }
 }
 .washer-block {
   grid-column: 7 / 13;
@@ -1192,7 +1316,8 @@ body {
 #showcase > .pic_2:nth-child(4) {
   grid-column: 1 / 4;
   grid-row: 2 / 3;
-  background: var(--red);
+
+  --cell: var(--red);
 }
 
 #showcase > .pic_2:nth-child(5) {
@@ -1350,22 +1475,20 @@ body {
 .room-item {
   position: absolute;
   left: 50%;
-  top: 70%;
-  width: clamp(22px, 3.2vw, 46px);
-  height: clamp(28px, 4.1vw, 58px);
-  border-radius: 0.85vw;
+  top: 20%;
+  width: 20vw;
+  height: 20vw;
   transform: translate(-50%, 0);
   transform-origin: 50% 110%;
   z-index: 3;
-
-  background: linear-gradient(180deg,
-    rgba(255,255,255,.95),
-    rgba(255,255,255,.62)
-  );
-  box-shadow:
-    0 1.1vw 2.2vw rgba(0,0,0,.28),
-    inset 0 0.25vw 0 rgba(255,255,255,.45);
+  background: url("../images/shinel.png") center / contain no-repeat;
 }
+
+#showcase .pic_2:nth-child(4) .room-item { background-image: url("../images/groodi.png"); }
+#showcase .pic_2:nth-child(5) .room-item { background-image: url("../images/krosovok.png"); }
+#showcase .pic_2:nth-child(6) .room-item { background-image: url("../images/shinel.png"); }
+#showcase .pic_2:nth-child(7) .room-item { background-image: url("../images/t-shirt.png"); }
+
 
 .room-item::after {
   content: "";
@@ -1481,4 +1604,11 @@ body {
     animation: none !important;
   }
   .trail-star{ opacity: 1; }
+}
+
+#footer {
+  grid-template-columns: repeat(12, 1 fr);
+  height: 75vw;
+  background-color: var(--yellow);
+  border: 0.3125vw solid var(--black);
 }

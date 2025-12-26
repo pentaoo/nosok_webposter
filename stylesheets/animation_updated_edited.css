@@ -12,6 +12,37 @@
     background-image: url(../images/sparkle_red.svg);
   }
 }
+@keyframes dvd-left {
+  from {
+    left: 0;
+  }
+  to {
+    left: calc(100% - var(--size));
+  }
+}
+@keyframes dvd-top {
+  from {
+    top: 0;
+  }
+  to {
+    top: calc(100% - var(--size));
+  }
+}
+@media (prefers-reduced-motion: reduce) { ... animation: none !important; }
+
+/* Tiny “life” in the sprite itself (does not affect the bounce path) */
+@keyframes dvd-wobble {
+  0%,
+  100% {
+    transform: rotate(var(--rot)) scale(1);
+  }
+  45% {
+    transform: rotate(calc(var(--rot) + 10deg)) scale(1.03);
+  }
+  70% {
+    transform: rotate(calc(var(--rot) - 8deg)) scale(0.99);
+  }
+}
 /* Вылет носков из открывшейся дверцы */
 @keyframes sock-out-1 {
   0% {
