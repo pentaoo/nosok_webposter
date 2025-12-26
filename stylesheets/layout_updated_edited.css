@@ -19,8 +19,7 @@
 body {
   background: var(--white);
 }
-
-/* === 12-колоночная сетка для первого экрана === */
+body { cursor: url("../images/cursor.png") 8 8, auto; }
 
 #first-block {
   display: grid;
@@ -31,18 +30,18 @@ body {
   justify-content: center;
 }
 .logo-block {
-  position: relative; /* база для абсолютного starfield */
-  overflow: hidden; /* чтобы звезды не вылезали за блок */
+  position: relative;
+  overflow: hidden; 
   grid-column: 1 / 8;
   height: 100%;
   border: 0.3125vw solid var(--black);
 }
-/* слой со звездами — под логотипом */
+
 .logo-block .starfield {
   position: absolute;
-  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  inset: 0; 
   z-index: 1;
-  pointer-events: none; /* чтобы не мешал кликам */
+  pointer-events: none; 
 }
 .logo {
   position: relative;
@@ -1285,19 +1284,17 @@ body {
 #showcase > .pic:nth-child(1) {
   grid-column: 1 / 7;  /* большой слева */
   grid-row: 1 / 2;
-  background: var(--green);
 }
-
-#showcase > .pic:nth-child(2) {
-  grid-column: 7 / 10; 
+#showcase > .pic_2:nth-child(2) {
+  grid-column: 7 / 10;
   grid-row: 1 / 2;
-  background: var(--pink);
+  --cell: var(--pink);
 }
-
-#showcase > .pic:nth-child(3) {
+#showcase > .pic_2:nth-child(3) {
   grid-column: 10 / 13;
   grid-row: 1 / 2;
-  background: var(--yellow);
+
+  --cell: var(--green);
 }
 
 #showcase > .pic_2:nth-child(4) {
@@ -1322,7 +1319,7 @@ body {
 #showcase > .pic_2:nth-child(7) {
   grid-column: 10 / 13;
   grid-row: 2 / 3;
-  --cell: var(--green);
+  --cell: var(--red);
 }
 /* интерактив */
 .pic_2 {
@@ -1595,7 +1592,18 @@ body {
 
 #footer {
   grid-template-columns: repeat(12, 1 fr);
-  height: 75vw;
-  background-color: var(--yellow);
-  border: 0.3125vw solid var(--black);
+  height: 10vw;
+  background-color: var(--white);
+  position: inherit;
 }
+
+#footer .text {
+ align-items: center;
+ justify-self: unset;
+ margin: 2vw;
+}
+h1 {
+  font-family: "Mabry Pro";
+  font-size: 2vw;
+}
+
