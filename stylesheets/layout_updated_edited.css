@@ -2599,7 +2599,8 @@ h1 {
     background: url("../images/shinel.png") center / contain no-repeat;
   }
   .h1 {
-    font-size: 5vw;
-    font-family: "Mabry Pro", system-ui, sans-serif;
+    font-family: "Mabry Pro", system-ui, -apple-system, "Segoe UI", Arial,
+      sans-serif;
+    font-weight: 700;
   }
 }
