@@ -1850,8 +1850,11 @@ h1 {
   .sock-block {
     display: none;
   }
+  #first_block {
+    height: 140vw;
+  }
   .logo-block {
-    height: 40vw;
+    height: 140vw;
     grid-column: 1 / 13;
   }
   #footer > .logo-block {
