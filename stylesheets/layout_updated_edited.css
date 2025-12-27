@@ -1754,6 +1754,7 @@ body {
   align-items: center;
   justify-items: center;
   margin: 2vw;
+  font-family: "Mabry Pro";
 }
 h1 {
   font-family: "Mabry Pro";
@@ -1775,6 +1776,11 @@ h1 {
 }
 
 @media (max-width: 500px) {
+  .body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
   .sock-block {
     display: none;
   }
