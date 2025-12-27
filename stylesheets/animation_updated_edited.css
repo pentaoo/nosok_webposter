@@ -28,9 +28,7 @@
     top: calc(100% - var(--size));
   }
 }
-@media (prefers-reduced-motion: reduce) { ... animation: none !important; }
 
-/* Tiny “life” in the sprite itself (does not affect the bounce path) */
 @keyframes dvd-wobble {
   0%,
   100% {
@@ -43,7 +41,7 @@
     transform: rotate(calc(var(--rot) - 8deg)) scale(0.99);
   }
 }
-/* Вылет носков из открывшейся дверцы */
+
 @keyframes sock-out-1 {
   0% {
     transform: translate(-40%, -35%) scale(1) rotate(0deg);
@@ -102,7 +100,6 @@
   }
 }
 
-/* Резкие скачки носков (дискретные позиции) */
 @keyframes sock-jump-1 {
   0%,
   8% {
@@ -225,7 +222,7 @@
     transform: translate(-90%, 100%) rotate(30deg);
   }
 }
-/* SPIN вариации */
+
 @keyframes star_spin_a {
   0% {
     transform: rotate(0) scale(1);
@@ -361,7 +358,6 @@
   }
 }
 
-/* PULSE вариации */
 @keyframes star_pulse_a {
   0%,
   100% {
@@ -454,7 +450,6 @@
   }
 }
 
-/* WOBBLE (микро-наклоны/живость) */
 @keyframes star_wobble_a {
   0%,
   100% {
@@ -487,7 +482,6 @@
   }
 }
 
-/* TWINKLE вариации */
 @keyframes star_twinkle_a {
   0%,
   100% {
@@ -586,7 +580,6 @@
   }
 }
 
-/* SHIMMER (яркость/свечение) */
 @keyframes star_shimmer_a {
   0%,
   100% {
@@ -610,7 +603,6 @@
   }
 }
 
-/* === WARDROBE STARS: "живое" движение (одна анимация на transform) === */
 @keyframes wardrobe_live_1 {
   0% {
     transform: translate(0, 0) rotate(0deg) scale(0.96);
@@ -834,7 +826,6 @@
   }
 }
 
-/* Свечение без потери тени (filter всегда включает drop-shadow) */
 @keyframes wardrobe_glow_a {
   0%,
   100% {
@@ -883,9 +874,6 @@
   }
 }
 
-/* ============================================================
-   SOCK + RAINBOW STAR TRAIL (no JS) — keyframes
-   ============================================================ */
 @keyframes trail_sock_float {
   0%,
   100% {
@@ -924,7 +912,6 @@
   }
 }
 
-/* Вылет звезды: от носка (справа) влево, с растворением */
 @keyframes trail_star_emit {
   0% {
     transform: translateX(0) translateY(0) scale(0.35) rotate(0deg);
@@ -943,7 +930,6 @@
   }
 }
 
-/* “Живость”: лёгкий воббл */
 @keyframes trail_star_wiggle {
   0%,
   100% {
@@ -957,7 +943,6 @@
   }
 }
 
-/* Мягкое “дыхание” */
 @keyframes trail_star_breath {
   0%,
   100% {
@@ -968,7 +953,6 @@
   }
 }
 
-/* Мерцание */
 @keyframes trail_star_twinkle {
   0%,
   100% {
@@ -1020,7 +1004,6 @@
   }
 }
 
-/* Микро-движение для “живости” */
 @keyframes sock_jitter {
   0%,
   100% {
@@ -1034,7 +1017,6 @@
   }
 }
 
-/* Смена “типа носка” без JS (как у вас sparkle_pink) */
 @keyframes sock_cycle {
   0% {
     background-image: url("../images/sock_pink.svg");
@@ -1053,8 +1035,7 @@
   }
 }
 
-/* Само вращение вокруг угла (угол = 0,0) */
-@keyframes sock_orbit {
+/ @keyframes sock_orbit {
   0% {
     transform: rotate(0deg);
   }
@@ -1063,7 +1044,6 @@
   }
 }
 
-/* respect reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .sock-carousel {
     animation: none;
@@ -1073,28 +1053,20 @@
     opacity: 1;
   }
 }
-/* =========================
-   SHOWCASE: pixel -> room hover
-   ========================= */
 
-/* для анимации размера “пикселя” */
 @property --px {
   syntax: "<length>";
   inherits: false;
   initial-value: 28px;
 }
 
-/* пиксельный слой (появляется на hover и “рассыпается”) */
 .pic_2::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 2;
-
   --px: 28px;
-
-  /* шашечный “пиксельный” узор */
   background: conic-gradient(
       from 90deg,
       rgba(0, 0, 0, 0.18) 0 25%,
@@ -1115,7 +1087,6 @@
   animation: showcase_pixel_reveal 720ms steps(10, end) both;
 }
 
-/* “дыхание” линий и предмета, чтобы было живее */
 .pic_2:hover .room-line,
 .pic_2:focus-within .room-line {
   animation: showcase_line_shimmer 1.55s ease-in-out infinite;
@@ -1190,7 +1161,6 @@
   }
 }
 
-/* reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .pic_2::after,
   .pic_2:hover .room-line,

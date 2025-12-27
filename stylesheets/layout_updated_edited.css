@@ -327,7 +327,6 @@ body {
     sock_cycle 2.6s steps(1, end) infinite;
 }
 
-/* Раскладываем фазы (задержки) для "карусели" */
 .sock-carousel .sock_pink:nth-child(1) {
   transform: rotate(0deg) translate(-34vw, 34vw);
 }
@@ -441,7 +440,7 @@ body {
 #move-row-logo:hover .marquee__track_logo {
   animation-play-state: running;
 }
-/* Иконки внутри ленты */
+
 #move-row-logo .icon img {
   height: 5vw;
   width: auto;
@@ -840,7 +839,6 @@ body {
   animation: sock-jump-4 2s infinite;
 }
 
-/* Тряска окна (дверцы) */
 .washer-door:hover .sock-1 {
   animation-name: sock-out-1;
   animation-duration: 0.9s;
@@ -876,7 +874,7 @@ body {
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
-/* На ховере – дверь открывается, стиралка перестает трястись */
+
 .washer-door:hover .door-ring {
   animation: none;
   transform: rotateY(-60deg);
@@ -993,7 +991,7 @@ body {
     transform: translateY(100%);
   }
 }
-/* Скорости слоёв */
+
 .lane--slow {
   --t: 7s;
   filter: blur(0.5rem);
@@ -1040,8 +1038,6 @@ body {
   }
 }
 
-/* ГАРДЕРОБ */
-
 .wardrobe-block {
   grid-column: 9 / 13;
   padding: 2.22vw 2.22vw 3.33vw;
@@ -1052,7 +1048,6 @@ body {
   grid-template-columns: repeat(5, 1fr);
 }
 
-/* САМ ЭЛЕМЕНТ: убираем любые квадратные "плашки" и box-shadow */
 .wardrobe-item {
   --item-size: 4.6vw;
 
@@ -1064,12 +1059,11 @@ body {
   transform-style: preserve-3d;
   transform-origin: top center;
   cursor: pointer;
-  /* ключевое: никакого фона/тени у контейнера */
   overflow: visible;
 
   transition: transform 0.35s ease, z-index 0.2s ease;
 }
-/* ВНУТРЕННИЙ БЛОК СО ЗВЕЗДОЙ */
+
 .wardrobe-square {
   width: 100%;
   height: 100%;
@@ -1418,9 +1412,8 @@ body {
   overflow: hidden;
 }
 
-/* верхний ряд */
 #showcase > .pic:nth-child(1) {
-  grid-column: 1 / 7; /* большой слева */
+  grid-column: 1 / 7;
   grid-row: 1 / 2;
 }
 #showcase > .pic_2:nth-child(2) {
@@ -1459,7 +1452,6 @@ body {
   grid-row: 2 / 3;
   --cell: var(--red);
 }
-/* интерактив */
 .pic_2 {
   background: var(--cell, var(--pink));
   cursor: pointer;
@@ -1485,7 +1477,6 @@ body {
   outline-offset: 0.35vw;
 }
 
-/* лёгкий “объём” клетки */
 .pic_2::before {
   content: "";
   position: absolute;
@@ -1495,7 +1486,6 @@ body {
   z-index: 0;
 }
 
-/* слой комнаты */
 .pic_2 .room {
   position: absolute;
   inset: 0;
@@ -1515,7 +1505,6 @@ body {
   filter: blur(0);
 }
 
-/* панели комнаты */
 .room-panel {
   position: absolute;
   inset: 0;
@@ -1609,7 +1598,6 @@ body {
   transform: rotate(180deg);
 }
 
-/* предмет внутри */
 .room-item {
   position: absolute;
   left: 50%;
@@ -1680,7 +1668,6 @@ body {
     trail_sock_glow 2.6s ease-in-out infinite;
 }
 
-/* Контейнер следа */
 .trail {
   position: absolute;
   left: 8%;
@@ -1692,7 +1679,6 @@ body {
   animation: trail_drift 2.9s ease-in-out infinite;
 }
 
-/* Эмиттер звезды (движение) */
 .trail-star {
   position: absolute;
   right: -4%;
@@ -1705,7 +1691,6 @@ body {
   will-change: transform, opacity;
 }
 
-/* Визуал звезды — ваша .sparkle_yellow (маска из sparkle_yellow.svg) */
 .sparkle_yellow::before {
   content: "";
   position: absolute;
@@ -1721,10 +1706,9 @@ body {
   animation: trail_star_wiggle 1.15s ease-in-out infinite,
     trail_star_breath 1.9s ease-in-out infinite,
     trail_star_twinkle 0.95s ease-in-out infinite;
-  animation-delay: inherit; /* синхронизация с вылетом */
+  animation-delay: inherit;
 }
 
-/* 30 звёзд: разные dy + задержки + палитра (родительские цвета) */
 .trail-star:nth-child(1) {
   --dy: -2.6vw;
   color: var(--red);
@@ -2257,24 +2241,19 @@ h1 {
     grid-template-columns: repeat(6, 1fr);
   }
 
-  /* САМ ЭЛЕМЕНТ: убираем любые квадратные "плашки" и box-shadow */
   .wardrobe-item {
     --item-size: 4.6vw;
-
     width: var(--item-size);
     aspect-ratio: 1 / 1;
     height: auto;
-
     position: relative;
     transform-style: preserve-3d;
     transform-origin: top center;
     cursor: pointer;
-    /* ключевое: никакого фона/тени у контейнера */
     overflow: visible;
-
     transition: transform 0.35s ease, z-index 0.2s ease;
   }
-  /* ВНУТРЕННИЙ БЛОК СО ЗВЕЗДОЙ */
+
   .wardrobe-square {
     width: 100%;
     height: 100%;
