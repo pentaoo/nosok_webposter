@@ -2600,5 +2600,6 @@ h1 {
   }
   .h1 {
     font-size: 5vw;
+    font-family: "Mabry Pro", system-ui, sans-serif;
   }
 }
